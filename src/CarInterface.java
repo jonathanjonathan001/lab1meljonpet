@@ -1,7 +1,7 @@
 import java.awt.*;
 
 
-public interface CarInterface {
+interface CarInterface {
     int getNrDoors();
     double getEnginePower();
     double getCurrentSpeed();
