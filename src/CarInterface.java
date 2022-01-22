@@ -1,5 +1,6 @@
 import java.awt.*;
 
+// car interface
 
 interface CarInterface {
     int getNrDoors();
