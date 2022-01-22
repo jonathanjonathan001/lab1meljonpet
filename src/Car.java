@@ -1,7 +1,7 @@
 import java.awt.*;
 
 
-abstract public class Car implements CarInterface  {
+public abstract class Car implements CarInterface  {
 
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
