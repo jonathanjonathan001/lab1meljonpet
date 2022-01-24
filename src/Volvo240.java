@@ -4,9 +4,11 @@ import java.awt.*;
 
 public class Volvo240 extends Car {
 
-    private final static double trimFactor = 1.25;
+    private final static double TRIMFACTOR = 1.25;
 
-    
+    /**
+     * Creates a car Volvo240
+     */
     public Volvo240(){
         nrDoors = 4;
         color = Color.black;
@@ -18,12 +20,12 @@ public class Volvo240 extends Car {
 
 
     
-    public double speedFactor(){
-        return enginePower * 0.01 * trimFactor;
+    private double speedFactor(){
+        return getEnginePower() * 0.01 * TRIMFACTOR;
     }
 
-    public void incrementSpeed(double amount){
-	    currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,enginePower);
+    private void incrementSpeed(double amount){
+	    setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
     }
 
     public void decrementSpeed(double amount){
