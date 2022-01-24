@@ -1,6 +1,8 @@
 import java.awt.*;
 
-
+/**
+ * Specifies the car Volvo240
+ */
 
 public class Volvo240 extends Car {
 
@@ -10,10 +12,7 @@ public class Volvo240 extends Car {
      * Creates a car Volvo240
      */
     public Volvo240(){
-        nrDoors = 4;
-        color = Color.black;
-        enginePower = 100;
-        modelName = "Volvo240";
+        super(4,100,0,Color.black,"Volvo240");
         stopEngine();
     }
     
@@ -25,8 +24,8 @@ public class Volvo240 extends Car {
 	    setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
     }
 
-    public void decrementSpeed(double amount){
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
+    private void decrementSpeed(double amount){
+        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount,0));
     }
 
     /**
@@ -46,4 +45,5 @@ public class Volvo240 extends Car {
     public void brake(double amount){
         decrementSpeed(amount);
     }
+
 }

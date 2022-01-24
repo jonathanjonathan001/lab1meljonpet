@@ -1,17 +1,18 @@
 import java.awt.*;
 
-
+/**
+ * Specifies the car Saab95
+ */
 public class Saab95 extends Car {
 
     public boolean turboOn;
 
-    
+    /**
+     * Creates a car Saab95
+     */
     public Saab95(){
-        nrDoors = 2;
-        color = Color.red;
-        enginePower = 125;
-	    turboOn = false;
-        modelName = "Saab95";
+        super(2,125,0,Color.red,"Saab95");
+        turboOn = false;
         stopEngine();
     }
 
@@ -28,15 +29,15 @@ public class Saab95 extends Car {
     public void setTurboOff(){
 	    turboOn = false;
     }
-    
-    public double speedFactor(){
+
+    private double speedFactor(){
         double turbo = 1;
         if(turboOn) turbo = 1.3;
-        return enginePower * 0.01 * turbo;
+        return getEnginePower() * 0.01 * turbo;
     }
 
-    public void incrementSpeed(double amount){
-        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+    private void incrementSpeed(double amount){
+        setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
     }
 
     private void decrementSpeed(double amount){
@@ -52,8 +53,13 @@ public class Saab95 extends Car {
         incrementSpeed(amount);
     }
 
+    /**
+     * Activates the brakes of the car
+     * @param amount the amount of brake power
+     */
     // TODO fix this method according to lab pm
     public void brake(double amount){
         decrementSpeed(amount);
     }
+
 }

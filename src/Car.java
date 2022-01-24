@@ -1,7 +1,15 @@
 import java.awt.*;
 
+/**
+ * Represents a car
+ */
+public abstract class Car implements Movable  {
 
-public abstract class Car implements CarInterface  {
+    private int nrDoors; // Number of doors on the car
+    private double enginePower; // Engine power of the car
+    private double currentSpeed; // The current speed of the car
+    private Color color; // Color of the car
+    private String modelName; // The car model name
 
     public enum Direction {NORTH, EAST, SOUTH, WEST}
     private Direction currentDirection = Direction.NORTH;
@@ -45,6 +53,11 @@ public abstract class Car implements CarInterface  {
     public int getNrDoors(){
         return nrDoors;
     }
+
+    /**
+     * returns the power of the engine
+     * @return power of the engine
+     */
     public double getEnginePower(){
         return enginePower;
     }
@@ -66,13 +79,88 @@ public abstract class Car implements CarInterface  {
         color = clr;
     }
 
+    /**
+     * Starts the engine
+     */
     public void startEngine(){
         currentSpeed = 0.1;
     }
 
+    /**
+     * Stops the engine
+     */
     public void stopEngine(){
         currentSpeed = 0;
     }
 
+    /**
+     * Returns the x-coordinate of the car
+     * @return x coordinate of the car
+     */
+    public double getxPosition(){
+        return xPosition;
+    }
 
+    /**
+     * Returns the y-coordinate of the car
+     * @return y-coordinate of the car
+     */
+    public double getyPosition(){
+        return yPosition;
+    }
+
+    /**
+     * returns the current direction of the car
+     * @return direction of the car
+     */
+    public Direction getCurrentDirection() {
+        return currentDirection;
+    }
+
+    /**
+     * Set the current direction of the car
+     * @param dir preferred direction
+     */
+    public void setCurrentDirection(Direction dir){
+        currentDirection = dir;
+    }
+
+    /**
+     * Moves the car according to direction
+     */
+    public void move() {
+        if (currentDirection == Direction.NORTH){
+            yPosition += currentSpeed;
+        } else if (currentDirection == Direction.SOUTH){
+            yPosition -= currentSpeed;
+        } else if (currentDirection == Direction.EAST){
+            xPosition += currentSpeed;
+        } else if (currentDirection == Direction.WEST){
+            xPosition-= currentSpeed;
+        }
+    }
+
+    /**
+     * Turns vehicle to the left
+     */
+    public void turnLeft() {
+        switch (currentDirection) {
+            case NORTH -> currentDirection = Direction.WEST;
+            case EAST -> currentDirection = Direction.NORTH;
+            case SOUTH -> currentDirection = Direction.EAST;
+            case WEST -> currentDirection = Direction.SOUTH;
+        }
+    }
+
+    /**
+     * Turns vehicle to the right
+     */
+    public void turnRight() {
+        switch (currentDirection) {
+            case NORTH -> currentDirection = Direction.EAST;
+            case EAST -> currentDirection = Direction.SOUTH;
+            case SOUTH -> currentDirection = Direction.WEST;
+            case WEST -> currentDirection = Direction.NORTH;
+        }
+    }
 }
