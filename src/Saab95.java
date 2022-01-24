@@ -22,6 +22,9 @@ public class Saab95 extends Car {
 	    turboOn = true;
     }
 
+    /**
+     * Sets turbo off
+     */
     public void setTurboOff(){
 	    turboOn = false;
     }
@@ -39,7 +42,11 @@ public class Saab95 extends Car {
     private void decrementSpeed(double amount){
         setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
     }
-    
+
+    /**
+     * Activates the accelerator of the car
+     * @param amount the amount of acceleration
+     */
     // TODO fix this method according to lab pm
     public void gas(double amount){
         incrementSpeed(amount);
