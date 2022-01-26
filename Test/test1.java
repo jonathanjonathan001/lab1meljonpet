@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 public class test1 {
 
-    Car testSaab95;
-    Car testVolvo240;
+    Saab95 testSaab95;
+    Volvo240 testVolvo240;
 
     @Before
     public void init() {
@@ -14,7 +14,7 @@ public class test1 {
     }
 
     @Test
-    public void testMoveNorth() {
+    public void move_UpdatesPositionY_WhenPointingNorth() {
 
         testSaab95.setCurrentDirection(Car.Direction.NORTH);
         testSaab95.setCurrentSpeed(1);
@@ -23,7 +23,7 @@ public class test1 {
     }
 
     @Test
-    public void testMoveSouth() {
+    public void move_UpdatesPositionY_WhenMovingSouth() {
 
         testSaab95.setCurrentDirection(Car.Direction.SOUTH);
         testSaab95.setCurrentSpeed(1);
