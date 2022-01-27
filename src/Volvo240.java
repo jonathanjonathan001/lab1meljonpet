@@ -15,8 +15,9 @@ public class Volvo240 extends Car {
         super(4,100,0,Color.black,"Volvo240");
         stopEngine();
     }
-    
-    private double speedFactor(){
+
+    @Override
+    protected double speedFactor(){
         return getEnginePower() * 0.01 * TRIMFACTOR;
     }
 
