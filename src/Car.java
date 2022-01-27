@@ -174,11 +174,7 @@ public abstract class Car implements Movable  {
         }
     }
 
-    protected void incrementSpeed(double amount){
-    }
-
-    protected void decrementSpeed(double amount){
-    }
+    protected abstract double speedFactor();
 
     /**
      * Activates the accelerator of the car
@@ -198,5 +194,13 @@ public abstract class Car implements Movable  {
         if (amount >= 0 && amount <= 1) {
             decrementSpeed(amount);
         }
+    }
+
+    private void incrementSpeed(double amount){
+        setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
+    }
+
+    private void decrementSpeed(double amount){
+        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount,0));
     }
 }
