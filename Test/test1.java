@@ -16,12 +16,6 @@ public class test1 {
         testVolvo240 = new Volvo240();
     }
 
-    @Test
-    public void testMove() {
-        testSaab95.setCurrentSpeed(1);
-        testSaab95.move();
-        assertTrue(testSaab95.getyPosition() == 1);
-    }
 
     @Test
     public void turnLeft_BecomesWest_WhenStartingFromNorth() {

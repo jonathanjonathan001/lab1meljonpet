@@ -27,21 +27,4 @@ public class Volvo240 extends Car {
     private void decrementSpeed(double amount){
         setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount,0));
     }
-
-    /**
-     * Activates the accelerator of the car
-     * @param amount the amount of acceleration
-     */
-    // TODO fix this method according to lab pm
-    public void gas(double amount){
-        incrementSpeed(amount);
-    }
-
-    /**
-     * Activates the brakes of the car
-     * @param amount the amount of brake power
-     */
-    // TODO fix this method according to lab pm
-    public void brake(double amount) { decrementSpeed(amount); }
-
 }
