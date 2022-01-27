@@ -150,4 +150,52 @@ public class test1 {
         assertTrue(testSaab95.getColor() == Color.green);
     }
 
+    @Test
+    public void gas_Saab95_doesNotAffectCurrentSpeed_whenGasIsMoreThan1(){
+        double speedBeforeGas = testSaab95.getCurrentSpeed();
+        testSaab95.gas(2);
+        assertTrue(testSaab95.getCurrentSpeed() == speedBeforeGas);
+    }
+
+    @Test
+    public void gas_Saab95_DoesNotAffectCurrentSpeed_whenGasIsLessThan0() {
+        double speedBeforeGas = testSaab95.getCurrentSpeed();
+        testSaab95.gas(-1);
+        assertTrue(testSaab95.getCurrentSpeed() == speedBeforeGas);
+    }
+
+    @Test
+    public void gas_Volvo240_DoesNotAffectCurrentSpeed_whenGasIsMoreThan1() {
+        double speedBeforeGas = testVolvo240.getCurrentSpeed();
+        testVolvo240.gas(2);
+        assertTrue(testVolvo240.getCurrentSpeed() == speedBeforeGas);
+    }
+
+    @Test
+    public void gas_Volvo240_DoesNotAffectCurrentSpeed_whenGasIsLessThan0(){
+        double speedBeforeGas = testVolvo240.getCurrentSpeed();
+        testVolvo240.gas(-1);
+        assertTrue(testVolvo240.getCurrentSpeed() == speedBeforeGas);
+    }
+
+    @Test
+    public void brake_Saab95_DoesNotAffectSpeed_WhenBrakeAmountLessThan0(){
+        double speedBeforeBrake = testSaab95.getCurrentSpeed();
+        testSaab95.brake(-1);
+        assertTrue(testSaab95.getCurrentSpeed() == speedBeforeBrake);
+    }
+
+    @Test
+    public void brakeSaab95_DoesNotAffectSpeed_WhenBrakeAmountMoreThan1(){
+        double speedBeforeBrake = testSaab95.getCurrentSpeed();
+        testSaab95.brake(2);
+        assertTrue(testSaab95.getCurrentSpeed() == speedBeforeBrake);
+    }
+
+    @Test
+    public void brakeVolvo240_DoesNotAffectCurrentSpeed_WhenBrakeAmountLessThan0(){
+        double speedBeforeBrake = testVolvo240.getCurrentSpeed();
+        testVolvo240.brake(-1);
+        assertTrue(testVolvo240.getCurrentSpeed() == speedBeforeBrake);
+    }
 }
