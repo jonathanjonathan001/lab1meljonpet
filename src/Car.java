@@ -36,7 +36,17 @@ public abstract class Car implements Movable  {
      * Sets the current speed of the car
      * @param currentSpeed current speed of the car
      */
-    public void setCurrentSpeed(double currentSpeed) { this.currentSpeed = currentSpeed; }
+    public void setCurrentSpeed(double currentSpeed) {
+        double maxSpeed = getEnginePower();
+        if (currentSpeed > maxSpeed) {
+            this.currentSpeed = maxSpeed;
+        }
+        else if (currentSpeed < 0) {
+            this.currentSpeed = 0;
+        } else{
+            this.currentSpeed = currentSpeed;
+        }
+    }
 
     /**
      * Returns the current speed of the car
@@ -161,6 +171,32 @@ public abstract class Car implements Movable  {
             case EAST -> currentDirection = Direction.SOUTH;
             case SOUTH -> currentDirection = Direction.WEST;
             case WEST -> currentDirection = Direction.NORTH;
+        }
+    }
+
+    protected void incrementSpeed(double amount){
+    }
+
+    protected void decrementSpeed(double amount){
+    }
+
+    /**
+     * Activates the accelerator of the car
+     * @param amount the amount of acceleration
+     */
+    public void gas(double amount) {
+        if (amount >= 0 && amount <= 1) {
+            incrementSpeed(amount);
+        }
+    }
+
+    /**
+     * Activates the brakes of the car
+     * @param amount the amount of brake power
+     */
+    public void brake(double amount) {
+        if (amount >= 0 && amount <= 1) {
+            decrementSpeed(amount);
         }
     }
 }

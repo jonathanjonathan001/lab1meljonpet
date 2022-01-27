@@ -36,30 +36,13 @@ public class Saab95 extends Car {
         return getEnginePower() * 0.01 * turbo;
     }
 
-    private void incrementSpeed(double amount){
+    @Override
+    protected void incrementSpeed(double amount){
         setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
     }
 
-    private void decrementSpeed(double amount){
+    @Override
+    protected void decrementSpeed(double amount){
         setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
     }
-
-    /**
-     * Activates the accelerator of the car
-     * @param amount the amount of acceleration
-     */
-    // TODO fix this method according to lab pm
-    public void gas(double amount){
-        incrementSpeed(amount);
-    }
-
-    /**
-     * Activates the brakes of the car
-     * @param amount the amount of brake power
-     */
-    // TODO fix this method according to lab pm
-    public void brake(double amount){
-        decrementSpeed(amount);
-    }
-
 }
