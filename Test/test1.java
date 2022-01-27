@@ -18,30 +18,57 @@ public class test1 {
 
 
     @Test
-    public void turnLeft_BecomesWest_WhenStartingFromNorth() {
+    public void saab_turnLeft_BecomesWest_WhenStartingFromNorth() {
         testSaab95.turnLeft();
         assertTrue(testSaab95.getCurrentDirection() == Car.Direction.WEST);
     }
 
     @Test
-    public void turnLeft_BecomesSouth_WhenStartingFromWest() {
+    public void saab_turnLeft_BecomesSouth_WhenStartingFromWest() {
         testSaab95.setCurrentDirection(Car.Direction.WEST);
         testSaab95.turnLeft();
         assertTrue(testSaab95.getCurrentDirection() == Car.Direction.SOUTH);
     }
 
     @Test
-    public void turnLeft_BecomesEast_WhenStartingFromSouth() {
+    public void saab_turnLeft_BecomesEast_WhenStartingFromSouth() {
         testSaab95.setCurrentDirection(Car.Direction.SOUTH);
         testSaab95.turnLeft();
         assertTrue(testSaab95.getCurrentDirection() == Car.Direction.EAST);
     }
 
     @Test
-    public void testTurnLeft_BecomesNorth_WhenStartingFromEast() {
+    public void saab_TurnLeft__BecomesNorth_WhenStartingFromEast() {
         testSaab95.setCurrentDirection(Car.Direction.EAST);
         testSaab95.turnLeft();
         assertTrue(testSaab95.getCurrentDirection() == Car.Direction.NORTH);
+    }
+
+    @Test
+    public void volvo_turnLeft_BecomesWest_WhenStartingFromNorth() {
+        testVolvo240.turnLeft();
+        assertTrue(testVolvo240.getCurrentDirection() == Car.Direction.WEST);
+    }
+
+    @Test
+    public void volvo_turnLeft_BecomesSouth_WhenStartingFromWest() {
+        testVolvo240.setCurrentDirection(Car.Direction.WEST);
+        testVolvo240.turnLeft();
+        assertTrue(testVolvo240.getCurrentDirection() == Car.Direction.SOUTH);
+    }
+
+    @Test
+    public void volvo_turnLeft_BecomesEast_WhenStartingFromSouth() {
+        testVolvo240.setCurrentDirection(Car.Direction.SOUTH);
+        testVolvo240.turnLeft();
+        assertTrue(testVolvo240.getCurrentDirection() == Car.Direction.EAST);
+    }
+
+    @Test
+    public void volvo_TurnLeft_BecomesNorth_WhenStartingFromEast() {
+        testVolvo240.setCurrentDirection(Car.Direction.EAST);
+        testVolvo240.turnLeft();
+        assertTrue(testVolvo240.getCurrentDirection() == Car.Direction.NORTH);
     }
 
     @Test
@@ -124,6 +151,43 @@ public class test1 {
         testSaab95.move();
         assertTrue(testSaab95.getxPosition() == testSaab95.getCurrentSpeed());
     }
+
+    @Test
+    public void move_volvo_UpdatesPositionY_WhenPointingNorth() {
+
+        testVolvo240.setCurrentDirection(Car.Direction.NORTH);
+        testVolvo240.setCurrentSpeed(1);
+        testVolvo240.move();
+        assertTrue(testVolvo240.getyPosition() == testVolvo240.getCurrentSpeed());
+    }
+
+    @Test
+    public void move_volvo_UpdatesPositionY_WhenMovingSouth() {
+
+        testVolvo240.setCurrentDirection(Car.Direction.SOUTH);
+        testVolvo240.setCurrentSpeed(1);
+        testVolvo240.move();
+        assertTrue(testVolvo240.getyPosition() == -testVolvo240.getCurrentSpeed());
+    }
+
+    @Test
+    public void move_volvo_UpdatesPositionX_WhenMovingWest() {
+
+        testVolvo240.setCurrentDirection(Car.Direction.WEST);
+        testVolvo240.setCurrentSpeed(1);
+        testVolvo240.move();
+        assertTrue(testVolvo240.getxPosition() == -testVolvo240.getCurrentSpeed());
+    }
+
+    @Test
+    public void move_volvo_UpdatesPositionX_WhenMovingEast() {
+        testVolvo240.setCurrentDirection(Car.Direction.EAST);
+        testVolvo240.setCurrentSpeed(1);
+        testVolvo240.move();
+        assertTrue(testVolvo240.getxPosition() == testVolvo240.getCurrentSpeed());
+    }
+
+
 
     @Test
     public void setTurboOff() {
