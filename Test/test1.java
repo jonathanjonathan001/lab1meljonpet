@@ -289,4 +289,28 @@ public class test1 {
         testVolvo240.brake(-1);
         assertTrue(testVolvo240.getCurrentSpeed() == speedBeforeBrake);
     }
+
+    @Test
+    public void gasScania_doesNotIncreaseSpeed_WhenTruckBedAngleIsNotZero() {
+        double speedBeforeGas = testScania.getCurrentSpeed();
+        testScania.liftTruckBed(testScania.truckBed.getMaxAngle());
+        testScania.gas(testScania.getEnginePower());
+        double speedAfterGas = testScania.getCurrentSpeed();
+        assertTrue(speedBeforeGas == speedAfterGas);
+    }
+
+    @Test
+    public void scaniaBedAngle_WillNotGoBelow0_whenDecrementAmountMoreThan70() {
+        testScania.lowerTruckBed(80);
+        assertTrue(testScania.truckBed.angleIsZero());
+    }
+
+
+    @Test
+    public void ScaniaIncrementAngleNotOver70_whenIncreaseAmountMoreThan70() {
+        testScania.liftTruckBed(80);
+        assertTrue(testScania.truckBed.getAngle() == testScania.truckBed.getMaxAngle());
+
+    }
+
 }
