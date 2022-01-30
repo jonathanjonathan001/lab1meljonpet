@@ -9,11 +9,13 @@ public class test1 {
 
     Saab95 testSaab95;
     Volvo240 testVolvo240;
+    Scania testScania;
 
     @Before
     public void init() {
         testSaab95 = new Saab95();
         testVolvo240 = new Volvo240();
+        testScania = new Scania();
     }
 
     @Test

@@ -196,7 +196,8 @@ public abstract class Car implements Movable  {
         }
     }
 
-    private void incrementSpeed(double amount){
+    // Protected so that cars using a truck bed can have an overridden gas method
+    protected void incrementSpeed(double amount){
         setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
     }
 
