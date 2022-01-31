@@ -1,7 +1,1 @@
-Varför kan man inte ha private för variablerna i car?
-Vilka metoder kan vi göra private?
-Vad är "modul" i project structure?
-Hur clonar man/pullar från en repos?
-
-
-Varför kan man inte ta in två doubles i assertEquals? men assertTrue funkar? (exempel scania)
+TESTERNA: load/unloadmetoderna i mrstransporter

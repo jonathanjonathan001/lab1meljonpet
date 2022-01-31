@@ -10,12 +10,17 @@ public class test1 {
     Saab95 testSaab95;
     Volvo240 testVolvo240;
     Scania testScania;
+    MrsTransporter testMrs;
+
 
     @Before
     public void init() {
         testSaab95 = new Saab95();
         testVolvo240 = new Volvo240();
         testScania = new Scania();
+        testMrs = new MrsTransporter();
+        testMrs.getCurrentCars().clear();
+        testMrs.lowerRamp();
     }
 
     @Test
@@ -305,7 +310,6 @@ public class test1 {
         testScania.lowerTruckBed(80);
         assertTrue(testScania.truckBed.angleIsZero());
     }
-
 
     @Test
     public void ScaniaIncrementAngleNotOver70_whenIncreaseAmountMoreThan70() {

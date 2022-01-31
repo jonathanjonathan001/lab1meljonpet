@@ -1,3 +1,4 @@
+
 public class TruckBed {
 
     private int angle;
@@ -62,6 +63,5 @@ public class TruckBed {
     public boolean angleIsZero(){
         return angle == 0;
     }
-
 
 }
