@@ -8,7 +8,7 @@ public class Scania extends Car {
      * Creates a car Scania
      */
     public Scania() {
-        super(2, 125, 0, Color.yellow, "Scania");
+        super(2, 125, 0, Color.yellow, "Scania", TypeOfCar.TRUCK);
         stopEngine();
     }
 

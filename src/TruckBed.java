@@ -7,7 +7,6 @@ public class TruckBed {
 
     public TruckBed(int angle) {
         this.angle = angle;
-        
     }
 
     /**

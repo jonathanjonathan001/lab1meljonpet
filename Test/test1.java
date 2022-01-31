@@ -2,11 +2,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.*;
+import java.util.Deque;
 
 import static org.junit.Assert.*;
 
 public class test1 {
 
+    private static final double DELTA = 0.0001;
     Saab95 testSaab95;
     Volvo240 testVolvo240;
     Scania testScania;
@@ -286,14 +288,14 @@ public class test1 {
     public void brakeSaab95_DoesNotAffectSpeed_WhenBrakeAmountMoreThan1() {
         double speedBeforeBrake = testSaab95.getCurrentSpeed();
         testSaab95.brake(2);
-        assertTrue(testSaab95.getCurrentSpeed() == speedBeforeBrake);
+        assertEquals(testSaab95.getCurrentSpeed(), speedBeforeBrake, DELTA);
     }
 
     @Test
     public void brakeVolvo240_DoesNotAffectCurrentSpeed_WhenBrakeAmountLessThan0() {
         double speedBeforeBrake = testVolvo240.getCurrentSpeed();
         testVolvo240.brake(-1);
-        assertTrue(testVolvo240.getCurrentSpeed() == speedBeforeBrake);
+        assertEquals(testVolvo240.getCurrentSpeed(), speedBeforeBrake, DELTA);
     }
 
     @Test
@@ -302,7 +304,7 @@ public class test1 {
         testScania.liftTruckBed(testScania.truckBed.getMaxAngle());
         testScania.gas(testScania.getEnginePower());
         double speedAfterGas = testScania.getCurrentSpeed();
-        assertTrue(speedBeforeGas == speedAfterGas);
+        assertEquals(speedBeforeGas, speedAfterGas, DELTA);
     }
 
     @Test
@@ -314,8 +316,7 @@ public class test1 {
     @Test
     public void ScaniaIncrementAngleNotOver70_whenIncreaseAmountMoreThan70() {
         testScania.liftTruckBed(80);
-        assertTrue(testScania.truckBed.getAngle() == testScania.truckBed.getMaxAngle());
-
+        assertEquals(testScania.truckBed.getAngle(), testScania.truckBed.getMaxAngle());
     }
 
     @Test   //failed

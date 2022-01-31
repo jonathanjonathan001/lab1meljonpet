@@ -12,7 +12,7 @@ public class Volvo240 extends Car {
      * Creates a car Volvo240
      */
     public Volvo240(){
-        super(4,100,0,Color.black,"Volvo240");
+        super(4,100,0,Color.black,"Volvo240", TypeOfCar.PERSONAL_CAR);
         stopEngine();
     }
 

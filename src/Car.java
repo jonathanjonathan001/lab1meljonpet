@@ -30,12 +30,17 @@ public abstract class Car implements Movable {
      * @param color        color of the car
      * @param modelName    name of the car model
      */
-    public Car(int nrDoors, double enginePower, double currentSpeed, Color color, String modelName) {
+    public Car(int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, TypeOfCar carType) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.currentSpeed = currentSpeed;
         this.color = color;
         this.modelName = modelName;
+        this.carType = carType;
+    }
+
+    public TypeOfCar getCarType(){
+        return carType;
     }
 
     /**
@@ -220,5 +225,13 @@ public abstract class Car implements Movable {
 
     private void decrementSpeed(double amount) {
         setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
+    }
+
+    public void setyPosition(double y) {
+        yPosition = y;
+    }
+
+    public void setxPosition(double x){
+        xPosition = x;
     }
 }

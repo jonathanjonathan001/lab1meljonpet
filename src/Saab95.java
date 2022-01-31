@@ -11,7 +11,7 @@ public class Saab95 extends Car {
      * Creates a car Saab95
      */
     public Saab95(){
-        super(2,125,0,Color.red,"Saab95");
+        super(2,125,0,Color.red,"Saab95", TypeOfCar.PERSONAL_CAR);
         turboOn = false;
         stopEngine();
     }
