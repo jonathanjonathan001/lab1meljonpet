@@ -23,8 +23,9 @@ public class Scania extends Car {
      * @param amount the amount of acceleration
      */
     public void gas(double amount) {
-        if (amount >= 0 && amount <= 1 && truckBed.angleIsZero()) {
-            incrementSpeed(amount);
+
+        if (truckBed.angleIsZero()) {
+            super.gas(amount);
         }
     }
 

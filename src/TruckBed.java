@@ -1,7 +1,8 @@
 public class TruckBed {
 
     private int angle;
-    private int MAX_ANGLE;
+
+    private static final int MAX_ANGLE = 70;
 
     public TruckBed(int angle) {
         this.angle = angle;

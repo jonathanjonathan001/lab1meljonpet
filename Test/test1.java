@@ -21,124 +21,124 @@ public class test1 {
     @Test
     public void saab_turnLeft_BecomesWest_WhenStartingFromNorth() {
         testSaab95.turnLeft();
-        assertTrue(testSaab95.getCurrentDirection() == Car.Direction.WEST);
+        assertEquals(testSaab95.getCurrentDirection(), Car.Direction.WEST);
     }
 
     @Test
     public void saab_turnLeft_BecomesSouth_WhenStartingFromWest() {
         testSaab95.setCurrentDirection(Car.Direction.WEST);
         testSaab95.turnLeft();
-        assertTrue(testSaab95.getCurrentDirection() == Car.Direction.SOUTH);
+        assertEquals(testSaab95.getCurrentDirection(), Car.Direction.SOUTH);
     }
 
     @Test
     public void saab_turnLeft_BecomesEast_WhenStartingFromSouth() {
         testSaab95.setCurrentDirection(Car.Direction.SOUTH);
         testSaab95.turnLeft();
-        assertTrue(testSaab95.getCurrentDirection() == Car.Direction.EAST);
+        assertEquals(testSaab95.getCurrentDirection(), Car.Direction.EAST);
     }
 
     @Test
     public void saab_TurnLeft__BecomesNorth_WhenStartingFromEast() {
         testSaab95.setCurrentDirection(Car.Direction.EAST);
         testSaab95.turnLeft();
-        assertTrue(testSaab95.getCurrentDirection() == Car.Direction.NORTH);
+        assertEquals(testSaab95.getCurrentDirection(), Car.Direction.NORTH);
     }
 
     @Test
     public void volvo_turnLeft_BecomesWest_WhenStartingFromNorth() {
         testVolvo240.turnLeft();
-        assertTrue(testVolvo240.getCurrentDirection() == Car.Direction.WEST);
+        assertEquals(testVolvo240.getCurrentDirection(), Car.Direction.WEST);
     }
 
     @Test
     public void volvo_turnLeft_BecomesSouth_WhenStartingFromWest() {
         testVolvo240.setCurrentDirection(Car.Direction.WEST);
         testVolvo240.turnLeft();
-        assertTrue(testVolvo240.getCurrentDirection() == Car.Direction.SOUTH);
+        assertEquals(testVolvo240.getCurrentDirection(), Car.Direction.SOUTH);
     }
 
     @Test
     public void volvo_turnLeft_BecomesEast_WhenStartingFromSouth() {
         testVolvo240.setCurrentDirection(Car.Direction.SOUTH);
         testVolvo240.turnLeft();
-        assertTrue(testVolvo240.getCurrentDirection() == Car.Direction.EAST);
+        assertEquals(testVolvo240.getCurrentDirection(), Car.Direction.EAST);
     }
 
     @Test
     public void volvo_TurnLeft_BecomesNorth_WhenStartingFromEast() {
         testVolvo240.setCurrentDirection(Car.Direction.EAST);
         testVolvo240.turnLeft();
-        assertTrue(testVolvo240.getCurrentDirection() == Car.Direction.NORTH);
+        assertEquals(testVolvo240.getCurrentDirection(), Car.Direction.NORTH);
     }
 
     @Test
     public void saab_TurnRight_becomesEast_whenStartingFromNorth() {
         testSaab95.setCurrentDirection(Car.Direction.NORTH);
         testSaab95.turnRight();
-        assertTrue(testSaab95.getCurrentDirection() == Car.Direction.EAST);
+        assertEquals(testSaab95.getCurrentDirection(), Car.Direction.EAST);
     }
 
     @Test
     public void saab_TurnRight_becomesSouth_whenStartingFromEast() {
         testSaab95.setCurrentDirection(Car.Direction.EAST);
         testSaab95.turnRight();
-        assertTrue(testSaab95.getCurrentDirection() == Car.Direction.SOUTH);
+        assertEquals(testSaab95.getCurrentDirection(), Car.Direction.SOUTH);
     }
 
     @Test
     public void saab_TurnRight_becomesWest_whenStartingFromSouth() {
         testSaab95.setCurrentDirection(Car.Direction.SOUTH);
         testSaab95.turnRight();
-        assertTrue(testSaab95.getCurrentDirection() == Car.Direction.WEST);
+        assertEquals(testSaab95.getCurrentDirection(), Car.Direction.WEST);
     }
 
     @Test
     public void saab_TurnRight_becomesNorth_whenStartingFromWest() {
         testSaab95.setCurrentDirection(Car.Direction.WEST);
         testSaab95.turnRight();
-        assertTrue(testSaab95.getCurrentDirection() == Car.Direction.NORTH);
+        assertEquals(testSaab95.getCurrentDirection(), Car.Direction.NORTH);
     }
 
     @Test
     public void volvo_TurnRight_becomesEast_whenStartingFromNorth() {
         testVolvo240.setCurrentDirection(Car.Direction.NORTH);
         testVolvo240.turnRight();
-        assertTrue(testVolvo240.getCurrentDirection() == Car.Direction.EAST);
+        assertEquals(testVolvo240.getCurrentDirection(), Car.Direction.EAST);
     }
 
     @Test
     public void volvo_TurnRight_becomesSouth_whenStartingFromEast() {
         testVolvo240.setCurrentDirection(Car.Direction.EAST);
         testVolvo240.turnRight();
-        assertTrue(testVolvo240.getCurrentDirection() == Car.Direction.SOUTH);
+        assertEquals(testVolvo240.getCurrentDirection(), Car.Direction.SOUTH);
     }
 
     @Test
     public void volvo_TurnRight_becomesWest_whenStartingFromSouth() {
         testVolvo240.setCurrentDirection(Car.Direction.SOUTH);
         testVolvo240.turnRight();
-        assertTrue(testVolvo240.getCurrentDirection() == Car.Direction.WEST);
+        assertEquals(testVolvo240.getCurrentDirection(), Car.Direction.WEST);
     }
 
     @Test
     public void volvo_TurnRight_becomesNorth_whenStartingFromWest() {
         testVolvo240.setCurrentDirection(Car.Direction.WEST);
         testVolvo240.turnRight();
-        assertTrue(testVolvo240.getCurrentDirection() == Car.Direction.NORTH);
+        assertEquals(testVolvo240.getCurrentDirection(), Car.Direction.NORTH);
     }
 
     @Test
     public void testStopEngine() {
         testSaab95.setCurrentSpeed(1);
         testSaab95.stopEngine();
-        assertTrue(testSaab95.getCurrentSpeed() == 0);
+        assertEquals(testSaab95.getCurrentSpeed(), 0, DELTA);
     }
 
     @Test
     public void testStartEngine() {
         testSaab95.startEngine();
-        assertTrue(testSaab95.getCurrentSpeed() == 0.1);
+        assertEquals(testSaab95.getCurrentSpeed(), 0.1, DELTA);
     }
 
     @Test
@@ -152,7 +152,7 @@ public class test1 {
         testSaab95.setCurrentDirection(Car.Direction.NORTH);
         testSaab95.setCurrentSpeed(1);
         testSaab95.move();
-        assertTrue(testSaab95.getyPosition() == testSaab95.getCurrentSpeed());
+        assertEquals(testSaab95.getyPosition(), testSaab95.getCurrentSpeed(), DELTA);
     }
 
     @Test
@@ -161,7 +161,7 @@ public class test1 {
         testSaab95.setCurrentDirection(Car.Direction.SOUTH);
         testSaab95.setCurrentSpeed(1);
         testSaab95.move();
-        assertTrue(testSaab95.getyPosition() == -testSaab95.getCurrentSpeed());
+        assertEquals(testSaab95.getyPosition(), -testSaab95.getCurrentSpeed(), DELTA);
     }
 
     @Test
@@ -170,7 +170,7 @@ public class test1 {
         testSaab95.setCurrentDirection(Car.Direction.WEST);
         testSaab95.setCurrentSpeed(1);
         testSaab95.move();
-        assertTrue(testSaab95.getxPosition() == -testSaab95.getCurrentSpeed());
+        assertEquals(testSaab95.getxPosition(), -testSaab95.getCurrentSpeed(), DELTA);
     }
 
     @Test
@@ -178,7 +178,7 @@ public class test1 {
         testSaab95.setCurrentDirection(Car.Direction.EAST);
         testSaab95.setCurrentSpeed(1);
         testSaab95.move();
-        assertTrue(testSaab95.getxPosition() == testSaab95.getCurrentSpeed());
+        assertEquals(testSaab95.getxPosition(), testSaab95.getCurrentSpeed(), DELTA);
     }
 
     @Test
@@ -187,7 +187,7 @@ public class test1 {
         testVolvo240.setCurrentDirection(Car.Direction.NORTH);
         testVolvo240.setCurrentSpeed(1);
         testVolvo240.move();
-        assertTrue(testVolvo240.getyPosition() == testVolvo240.getCurrentSpeed());
+        assertEquals(testVolvo240.getyPosition(), testVolvo240.getCurrentSpeed(), DELTA);
     }
 
     @Test
@@ -196,7 +196,7 @@ public class test1 {
         testVolvo240.setCurrentDirection(Car.Direction.SOUTH);
         testVolvo240.setCurrentSpeed(1);
         testVolvo240.move();
-        assertTrue(testVolvo240.getyPosition() == -testVolvo240.getCurrentSpeed());
+        assertEquals(testVolvo240.getyPosition(), -testVolvo240.getCurrentSpeed(), DELTA);
     }
 
     @Test
@@ -205,7 +205,7 @@ public class test1 {
         testVolvo240.setCurrentDirection(Car.Direction.WEST);
         testVolvo240.setCurrentSpeed(1);
         testVolvo240.move();
-        assertTrue(testVolvo240.getxPosition() == -testVolvo240.getCurrentSpeed());
+        assertEquals(testVolvo240.getxPosition(), -testVolvo240.getCurrentSpeed(), DELTA);
     }
 
     @Test
@@ -213,7 +213,7 @@ public class test1 {
         testVolvo240.setCurrentDirection(Car.Direction.EAST);
         testVolvo240.setCurrentSpeed(1);
         testVolvo240.move();
-        assertTrue(testVolvo240.getxPosition() == testVolvo240.getCurrentSpeed());
+        assertEquals(testVolvo240.getxPosition(), testVolvo240.getCurrentSpeed(), DELTA);
     }
 
 
@@ -233,48 +233,48 @@ public class test1 {
     @Test
     public void setColor() {
         testSaab95.setColor(Color.black);
-        assertTrue(testSaab95.getColor() == Color.black);
+        assertEquals(testSaab95.getColor(), Color.black);
     }
 
     @Test
     public void getColor() {
         testSaab95.setColor(Color.green);
-        assertTrue(testSaab95.getColor() == Color.green);
+        assertEquals(testSaab95.getColor(), Color.green);
     }
 
     @Test
     public void gas_Saab95_doesNotAffectCurrentSpeed_whenGasIsMoreThan1() {
         double speedBeforeGas = testSaab95.getCurrentSpeed();
         testSaab95.gas(2);
-        assertTrue(testSaab95.getCurrentSpeed() == speedBeforeGas);
+        assertEquals(testSaab95.getCurrentSpeed(), speedBeforeGas, DELTA);
     }
 
     @Test
     public void gas_Saab95_DoesNotAffectCurrentSpeed_whenGasIsLessThan0() {
         double speedBeforeGas = testSaab95.getCurrentSpeed();
         testSaab95.gas(-1);
-        assertTrue(testSaab95.getCurrentSpeed() == speedBeforeGas);
+        assertEquals(testSaab95.getCurrentSpeed(), speedBeforeGas, DELTA);
     }
 
     @Test
     public void gas_Volvo240_DoesNotAffectCurrentSpeed_whenGasIsMoreThan1() {
         double speedBeforeGas = testVolvo240.getCurrentSpeed();
         testVolvo240.gas(2);
-        assertTrue(testVolvo240.getCurrentSpeed() == speedBeforeGas);
+        assertEquals(testVolvo240.getCurrentSpeed(), speedBeforeGas, DELTA);
     }
 
     @Test
     public void gas_Volvo240_DoesNotAffectCurrentSpeed_whenGasIsLessThan0() {
         double speedBeforeGas = testVolvo240.getCurrentSpeed();
         testVolvo240.gas(-1);
-        assertTrue(testVolvo240.getCurrentSpeed() == speedBeforeGas);
+        assertEquals(testVolvo240.getCurrentSpeed(), speedBeforeGas, DELTA);
     }
 
     @Test
     public void brake_Saab95_DoesNotAffectSpeed_WhenBrakeAmountLessThan0() {
         double speedBeforeBrake = testSaab95.getCurrentSpeed();
         testSaab95.brake(-1);
-        assertTrue(testSaab95.getCurrentSpeed() == speedBeforeBrake);
+        assertEquals(testSaab95.getCurrentSpeed(), speedBeforeBrake, DELTA);
     }
 
     @Test
@@ -312,6 +312,46 @@ public class test1 {
         testScania.liftTruckBed(80);
         assertTrue(testScania.truckBed.getAngle() == testScania.truckBed.getMaxAngle());
 
+    }
+
+    @Test   //failed
+    public void MrsTransportUnload_DoesNotUnload_WhenRampIsUp() {
+        testMrs.load(testSaab95);
+        testMrs.liftRamp();
+        testMrs.unload();
+        assertTrue(testMrs.getCurrentCars().contains(testSaab95));
+    }
+
+    @Test   //failed
+    public void mrsTransporterUnload_UnloadsTheCarThatEnteredLast() {
+        testMrs.load(testSaab95);
+        testMrs.load(testVolvo240);
+        testMrs.unload();
+        Deque<Car> currentCars = testMrs.getCurrentCars();
+        assertTrue(!currentCars.contains(testVolvo240) && currentCars.contains(testSaab95));
+    }
+
+    @Test   //failed
+    public void mrsTransporterLoad_StackSize1_WhenLoadedWith1Car() {
+        testMrs.load(testSaab95);
+        assertEquals(testMrs.getCurrentCars().size(), 1);
+    }
+
+    @Test
+    public void mrsTransporterGas_DoesNotWork_WhenInRampStateIsDown() {
+        double speedBeforeGas = testMrs.getCurrentSpeed();
+        testMrs.gas(testMrs.getEnginePower());
+        double speedAfterGas = testMrs.getCurrentSpeed();
+        assertEquals(speedBeforeGas, speedAfterGas, DELTA);
+    }
+
+    @Test
+    public void mrsTransporterLowerRamp_DoesNotLower_WhenInMotion() {
+        testMrs.liftRamp();
+        Ramp.RampState stateBeforeGas = testMrs.getRampState();
+        testMrs.gas(testMrs.getEnginePower());
+        Ramp.RampState stateAfterGas = testMrs.getRampState();
+        assertEquals(stateBeforeGas, stateAfterGas);
     }
 
 }
