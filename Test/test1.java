@@ -319,7 +319,7 @@ public class test1 {
         assertEquals(testScania.truckBed.getAngle(), testScania.truckBed.getMaxAngle());
     }
 
-    @Test   //failed
+    @Test
     public void MrsTransportUnload_DoesNotUnload_WhenRampIsUp() {
         testMrs.load(testSaab95);
         testMrs.liftRamp();
@@ -327,7 +327,7 @@ public class test1 {
         assertTrue(testMrs.getCurrentCars().contains(testSaab95));
     }
 
-    @Test   //failed
+    @Test
     public void mrsTransporterUnload_UnloadsTheCarThatEnteredLast() {
         testMrs.load(testSaab95);
         testMrs.load(testVolvo240);
@@ -336,7 +336,7 @@ public class test1 {
         assertTrue(!currentCars.contains(testVolvo240) && currentCars.contains(testSaab95));
     }
 
-    @Test   //failed
+    @Test
     public void mrsTransporterLoad_StackSize1_WhenLoadedWith1Car() {
         testMrs.load(testSaab95);
         assertEquals(testMrs.getCurrentCars().size(), 1);

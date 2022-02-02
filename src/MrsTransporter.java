@@ -54,7 +54,7 @@ public class MrsTransporter extends Car {
      */
     public void lowerRamp(){
         if(rampIsLifted() && getCurrentSpeed() == 0){
-            ramp.setCurrentRampState(Ramp.RampState.UP);
+            ramp.setCurrentRampState(Ramp.RampState.DOWN);
         }
     }
 
@@ -63,7 +63,7 @@ public class MrsTransporter extends Car {
      */
     public void liftRamp(){
         if(!rampIsLifted() && getCurrentSpeed() == 0){
-            ramp.setCurrentRampState(Ramp.RampState.DOWN);
+            ramp.setCurrentRampState(Ramp.RampState.UP);
         }
     }
 
