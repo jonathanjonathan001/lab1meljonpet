@@ -358,5 +358,4 @@ public class test1 {
         Ramp.RampState stateAfterGas = testMrs.getRampState();
         assertEquals(stateBeforeGas, stateAfterGas);
     }
-
 }
