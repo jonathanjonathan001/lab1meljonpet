@@ -234,7 +234,7 @@ public class test1 {
     @Test
     public void setTurboOn() {
         testSaab95.setTurboOn();
-        assertTrue(testSaab95.turboOn);
+        assertTrue(testSaab95.turboIsOn());
     }
 
     @Test
