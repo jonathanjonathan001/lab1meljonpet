@@ -11,21 +11,22 @@ public class Volvo240 extends Car {
     /**
      * Creates a car Volvo240
      */
-    public Volvo240(){
-        super(4,100,0,Color.black,"Volvo240", TypeOfCar.PERSONAL_CAR);
+    public Volvo240() {
+        super(4, 100, 0, Color.black, "Volvo240", TypeOfCar.PERSONAL_CAR);
         stopEngine();
     }
 
     /**
      * returns the trimfactor of the car
+     *
      * @return trimfactor
      */
-    public double getTrimFactor(){
+    public double getTrimFactor() {
         return TRIMFACTOR;
     }
 
     @Override
-    protected double speedFactor(){
+    protected double speedFactor() {
         return getEnginePower() * 0.01 * TRIMFACTOR;
     }
 

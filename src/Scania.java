@@ -31,6 +31,7 @@ public class Scania extends Car {
 
     /**
      * Lifts the truck bed (if truck is standing still)
+     *
      * @param increaseAmount How much the bed will lift
      */
     public void liftTruckBed(int increaseAmount) {
@@ -39,6 +40,7 @@ public class Scania extends Car {
 
     /**
      * Lowers the truck bed if truck is standing still
+     *
      * @param decreaseAmount How much the bed will be lowered
      */
     public void lowerTruckBed(int decreaseAmount) {

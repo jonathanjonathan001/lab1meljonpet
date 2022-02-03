@@ -11,18 +11,20 @@ public class TruckBed {
 
     /**
      * Returns current angle of the truck bed
-     * @return  the current angle of the truck bed
+     *
+     * @return the current angle of the truck bed
      */
-    public int getAngle(){
+    public int getAngle() {
         return angle;
     }
 
     /**
      * Increases the angle of the truck bed
+     *
      * @param angleIncrease angle with which to increase the current angle
-     * @param currentSpeed checks if the car using the truck bed is standing still
+     * @param currentSpeed  checks if the car using the truck bed is standing still
      */
-    public void increaseAngle (int angleIncrease, double currentSpeed) {
+    public void increaseAngle(int angleIncrease, double currentSpeed) {
         int total = angle + angleIncrease;
 
         if (total < MAX_ANGLE && currentSpeed == 0) {
@@ -34,6 +36,7 @@ public class TruckBed {
 
     /**
      * Returns the maximum angle of the car's truckbed
+     *
      * @return maximum angle of car's truckbed
      */
     public int getMaxAngle() {
@@ -42,24 +45,26 @@ public class TruckBed {
 
     /**
      * Decreases the angle of the truck bed
+     *
      * @param angleDecrease angle with which to decrease the current angle
-     * @param currentSpeed checks if the car using the truck bed is standing still
+     * @param currentSpeed  checks if the car using the truck bed is standing still
      */
-    public void decreaseAngle (int angleDecrease, double currentSpeed){
+    public void decreaseAngle(int angleDecrease, double currentSpeed) {
         int total = angle - angleDecrease;
 
-        if (total > 0 && currentSpeed == 0){
+        if (total > 0 && currentSpeed == 0) {
             angle -= angleDecrease;
-        } else if (total < 0){
+        } else if (total < 0) {
             angle = 0;
         }
     }
 
     /**
      * Checks if the angle of the truck bed is zero
+     *
      * @return true if angle is zero, false if not
      */
-    public boolean angleIsZero(){
+    public boolean angleIsZero() {
         return angle == 0;
     }
 

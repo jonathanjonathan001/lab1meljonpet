@@ -29,7 +29,7 @@ public class test1 {
     }
 
     @Test
-    public void saab95_SpeedFactorWithoutTurboIsLessThanWithTurbo(){
+    public void saab95_SpeedFactorWithoutTurboIsLessThanWithTurbo() {
         double speedFactorWithoutTurbo = testSaab95.speedFactor();
         testSaab95.setTurboOn();
         double speedFactorWithTurbo = testSaab95.speedFactor();
@@ -38,7 +38,7 @@ public class test1 {
 
     @Test
     public void volvo240_SpeedFactorIsAsExpected() {
-        assertEquals(testVolvo240.getEnginePower()*0.01*testVolvo240.getTrimFactor(), testVolvo240.speedFactor(), DELTA);
+        assertEquals(testVolvo240.getEnginePower() * 0.01 * testVolvo240.getTrimFactor(), testVolvo240.speedFactor(), DELTA);
     }
 
     @Test
@@ -374,7 +374,7 @@ public class test1 {
     }
 
     @Test
-    public void mrsTransporterMove_AllCarsPositionsAreTheSame_AfterMove(){
+    public void mrsTransporterMove_AllCarsPositionsAreTheSame_AfterMove() {
         testMrs.load(testSaab95);
         testMrs.load(testVolvo240);
 
@@ -386,7 +386,7 @@ public class test1 {
         boolean checkPositionsYVolvo = Math.abs(testVolvo240.getyPosition() - testMrs.getyPosition()) < DELTA;
 
         assertTrue(checkPositionsXSaab && checkPositionsYSaab
-                    && checkPositionsXVolvo && checkPositionsYVolvo);
+                && checkPositionsXVolvo && checkPositionsYVolvo);
     }
 
     @Test
@@ -396,7 +396,7 @@ public class test1 {
     }
 
     @Test
-    public void AllCarRepairShop_Saab95AtIndex0_Volvo240AtIndex1_WhenLoaded(){
+    public void AllCarRepairShop_Saab95AtIndex0_Volvo240AtIndex1_WhenLoaded() {
         testAllRepair.load(testSaab95);
         testAllRepair.load(testVolvo240);
         assertTrue(testAllRepair.carsInShop.indexOf(testSaab95) == 0 &&
@@ -404,19 +404,19 @@ public class test1 {
     }
 
     @Test
-    public void Saab95RepairShop_ContainsSaab95_WhenSaab95IsLoaded(){
+    public void Saab95RepairShop_ContainsSaab95_WhenSaab95IsLoaded() {
         testSaabRepair.load(testSaab95);
         assertTrue(testSaabRepair.carsInShop.contains(testSaab95));
     }
 
     @Test
-    public void AllRepairShop_ContainsSaab95_WhenSaab95IsLoaded(){
+    public void AllRepairShop_ContainsSaab95_WhenSaab95IsLoaded() {
         testAllRepair.load(testSaab95);
         assertTrue(testAllRepair.carsInShop.contains(testSaab95));
     }
 
     @Test
-    public void AllCarsRepairShop_Saab95IsRemovedFromList_WhenUnloaded(){
+    public void AllCarsRepairShop_Saab95IsRemovedFromList_WhenUnloaded() {
         testAllRepair.load(testSaab95);
         testAllRepair.unload(testSaab95);
         assertFalse(testAllRepair.carsInShop.contains(testSaab95));

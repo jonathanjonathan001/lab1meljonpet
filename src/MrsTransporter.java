@@ -11,7 +11,7 @@ public class MrsTransporter extends Car {
     /**
      * Creates a truck MrsTransporter
      */
-    public MrsTransporter(){
+    public MrsTransporter() {
         super(2, 125, 0, Color.blue, "MrsTransporter", TypeOfCar.TRUCK);
         stopEngine();
     }
@@ -23,9 +23,10 @@ public class MrsTransporter extends Car {
 
     /**
      * returns true if the ramp is up, false if the ramp is up
-      * @return ramp state
+     *
+     * @return ramp state
      */
-    public boolean rampIsLifted(){
+    public boolean rampIsLifted() {
         return ramp.getCurrentRampState() == Ramp.RampState.UP;
     }
 
@@ -33,13 +34,14 @@ public class MrsTransporter extends Car {
      * Moves the truck and all its loaded cars
      */
     @Override
-    public void move (){
+    public void move() {
         super.move();
         updatePositionOfCurrentCars();
     }
 
     /**
      * Activates the accelerator of the car if the ramp is up
+     *
      * @param amount the amount of acceleration
      */
     @Override
@@ -52,8 +54,8 @@ public class MrsTransporter extends Car {
     /**
      * Lowers the ramp
      */
-    public void lowerRamp(){
-        if(rampIsLifted() && getCurrentSpeed() == 0){
+    public void lowerRamp() {
+        if (rampIsLifted() && getCurrentSpeed() == 0) {
             ramp.setCurrentRampState(Ramp.RampState.DOWN);
         }
     }
@@ -61,18 +63,19 @@ public class MrsTransporter extends Car {
     /**
      * Lifts the ramp
      */
-    public void liftRamp(){
-        if(!rampIsLifted() && getCurrentSpeed() == 0){
+    public void liftRamp() {
+        if (!rampIsLifted() && getCurrentSpeed() == 0) {
             ramp.setCurrentRampState(Ramp.RampState.UP);
         }
     }
 
     /**
      * Loads the car transport with a car
+     *
      * @param car the current car
      */
-    public void load(Car car){
-        if (!rampIsLifted() && isClose(car) && car.getCarType() == TypeOfCar.PERSONAL_CAR){
+    public void load(Car car) {
+        if (!rampIsLifted() && isClose(car) && car.getCarType() == TypeOfCar.PERSONAL_CAR) {
             currentCars.push(car);
         }
     }
@@ -80,31 +83,31 @@ public class MrsTransporter extends Car {
     /**
      * Unloads a car from the car transport
      */
-    public void unload(){
-        if (!rampIsLifted() && !currentCars.isEmpty()){
-            currentCars.peek().setxPosition(getxPosition()+1);
+    public void unload() {
+        if (!rampIsLifted() && !currentCars.isEmpty()) {
+            currentCars.peek().setxPosition(getxPosition() + 1);
             currentCars.pop();
         }
     }
 
-    private void updatePositionOfCurrentCars(){
-        for (Car c : currentCars){
+    private void updatePositionOfCurrentCars() {
+        for (Car c : currentCars) {
             c.setxPosition(this.getxPosition());
             c.setyPosition(this.getyPosition());
         }
     }
 
     private boolean isClose(Car car) {
-        boolean checkX = (this.getxPosition()-car.getxPosition() <= 10);
-        boolean checkY = (this.getyPosition()-car.getyPosition() <= 10);
+        boolean checkX = (this.getxPosition() - car.getxPosition() <= 10);
+        boolean checkY = (this.getyPosition() - car.getyPosition() <= 10);
         return checkX && checkY;
     }
 
-    public Deque<Car> getCurrentCars(){
+    public Deque<Car> getCurrentCars() {
         return currentCars;
     }
 
-    public Ramp.RampState getRampState(){
+    public Ramp.RampState getRampState() {
         return ramp.getCurrentRampState();
     }
 
