@@ -15,7 +15,8 @@ public class RepairShop<T extends Car> {
         this.carsInShop = new ArrayList<>();
     }
 
-    boolean comparePositions(T compareCar){
+
+    private boolean comparePositions(T compareCar){
         boolean checkX = Math.abs(compareCar.getxPosition() - xPosition) <= 10;
         boolean checkY = Math.abs(compareCar.getyPosition() - yPosition) <= 10;
         return checkX && checkY;

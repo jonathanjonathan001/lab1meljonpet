@@ -16,6 +16,14 @@ public class Volvo240 extends Car {
         stopEngine();
     }
 
+    /**
+     * returns the trimfactor of the car
+     * @return trimfactor
+     */
+    public double getTrimFactor(){
+        return TRIMFACTOR;
+    }
+
     @Override
     protected double speedFactor(){
         return getEnginePower() * 0.01 * TRIMFACTOR;

@@ -13,7 +13,8 @@ public class test1 {
     Volvo240 testVolvo240;
     Scania testScania;
     MrsTransporter testMrs;
-
+    RepairShop<Saab95> testSaabRepair;
+    RepairShop<Car> testAllRepair;
 
     @Before
     public void init() {
@@ -241,7 +242,7 @@ public class test1 {
     @Test
     public void setTurboOff() {
         testSaab95.setTurboOff();
-        assertTrue(!testSaab95.turboOn);
+        assertFalse(testSaab95.turboIsOn());
     }
 
     @Test
