@@ -429,8 +429,6 @@ public class test1 {
         assertFalse(testSaabRepair.carsInShop.contains(testSaab95));
     }
 
-
-
 /*    @Test   //för redovisning - funkar inte och ska inte funka
     public void Saab95RepairShop_Volvo240IsNotLoaded_WhenTryingToLoadVolvo240() {
         testSaabRepair.load(testVolvo240);
