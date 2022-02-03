@@ -23,6 +23,21 @@ public class test1 {
         testMrs = new MrsTransporter();
         testMrs.getCurrentCars().clear();
         testMrs.lowerRamp();
+        testSaabRepair = new RepairShop<Saab95>(10);
+        testAllRepair = new RepairShop<Car>(10);
+    }
+
+    @Test
+    public void saab95_SpeedFactorWithoutTurboIsLessThanWithTurbo(){
+        double speedFactorWithoutTurbo = testSaab95.speedFactor();
+        testSaab95.setTurboOn();
+        double speedFactorWithTurbo = testSaab95.speedFactor();
+        assertTrue(speedFactorWithoutTurbo < speedFactorWithTurbo);
+    }
+
+    @Test
+    public void volvo240_SpeedFactorIsAsExpected() {
+        assertEquals(testVolvo240.getEnginePower()*0.01*testVolvo240.getTrimFactor(), testVolvo240.speedFactor(), DELTA);
     }
 
     @Test
@@ -223,13 +238,11 @@ public class test1 {
         assertEquals(testVolvo240.getxPosition(), testVolvo240.getCurrentSpeed(), DELTA);
     }
 
-
     @Test
     public void setTurboOff() {
         testSaab95.setTurboOff();
         assertTrue(!testSaab95.turboOn);
     }
-
 
     @Test
     public void setTurboOn() {
@@ -358,4 +371,70 @@ public class test1 {
         Ramp.RampState stateAfterGas = testMrs.getRampState();
         assertEquals(stateBeforeGas, stateAfterGas);
     }
+
+    @Test
+    public void mrsTransporterMove_AllCarsPositionsAreTheSame_AfterMove(){
+        testMrs.load(testSaab95);
+        testMrs.load(testVolvo240);
+
+        testMrs.gas(1);
+        testMrs.move();
+        boolean checkPositionsXSaab = Math.abs(testSaab95.getxPosition() - testMrs.getxPosition()) < DELTA;
+        boolean checkPositionsYSaab = Math.abs(testSaab95.getyPosition() - testMrs.getyPosition()) < DELTA;
+        boolean checkPositionsXVolvo = Math.abs(testVolvo240.getxPosition() - testMrs.getxPosition()) < DELTA;
+        boolean checkPositionsYVolvo = Math.abs(testVolvo240.getyPosition() - testMrs.getyPosition()) < DELTA;
+
+        assertTrue(checkPositionsXSaab && checkPositionsYSaab
+                    && checkPositionsXVolvo && checkPositionsYVolvo);
+    }
+
+    @Test
+    public void SaabRepairShop_Saab95AtIndex0_WhenLoaded() {
+        testSaabRepair.load(testSaab95);
+        assertEquals(testSaabRepair.carsInShop.indexOf(testSaab95), 0);
+    }
+
+    @Test
+    public void AllCarRepairShop_Saab95AtIndex0_Volvo240AtIndex1_WhenLoaded(){
+        testAllRepair.load(testSaab95);
+        testAllRepair.load(testVolvo240);
+        assertTrue(testAllRepair.carsInShop.indexOf(testSaab95) == 0 &&
+                testAllRepair.carsInShop.indexOf(testVolvo240) == 1);
+    }
+
+    @Test
+    public void Saab95RepairShop_ContainsSaab95_WhenSaab95IsLoaded(){
+        testSaabRepair.load(testSaab95);
+        assertTrue(testSaabRepair.carsInShop.contains(testSaab95));
+    }
+
+    @Test
+    public void AllRepairShop_ContainsSaab95_WhenSaab95IsLoaded(){
+        testAllRepair.load(testSaab95);
+        assertTrue(testAllRepair.carsInShop.contains(testSaab95));
+    }
+
+    @Test
+    public void AllCarsRepairShop_Saab95IsRemovedFromList_WhenUnloaded(){
+        testAllRepair.load(testSaab95);
+        testAllRepair.unload(testSaab95);
+        assertFalse(testAllRepair.carsInShop.contains(testSaab95));
+    }
+
+    @Test
+    public void Saab95RepairShop_Saab95IsRemovedFromList_WhenUnloaded() {
+        testSaabRepair.load(testSaab95);
+        testSaabRepair.unload(testSaab95);
+        assertFalse(testSaabRepair.carsInShop.contains(testSaab95));
+    }
+
+
+
+/*    @Test   //för redovisning - funkar inte och ska inte funka
+    public void Saab95RepairShop_Volvo240IsNotLoaded_WhenTryingToLoadVolvo240() {
+        testSaabRepair.load(testVolvo240);
+        assertFalse(testSaabRepair.carsInShop.contains(testVolvo240));
+    }
+*/
+
 }

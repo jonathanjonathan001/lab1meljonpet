@@ -21,14 +21,23 @@ public class RepairShop<T extends Car> {
         return checkX && checkY;
     }
 
-
+    /**
+     * Loads the chosen car into the repair shop if the maximum hasn't been breached and they're within reasonable range.
+     * @param carLoading the car that is being loaded
+     */
     public void load(T carLoading){
         if (carsInShop.size() < maximumCars && comparePositions(carLoading)){
             carsInShop.add(carLoading);
         }
     }
 
-    public void unLoad(int index) {
-
+    /**
+     * Removes a car from the Repair Shop
+     * @param carUnloading the car that is being unloaded and removed
+     */
+    public void unload(T carUnloading) {
+        if (carsInShop.contains(carUnloading)) {
+           carsInShop.remove(carUnloading);
+        }
     }
 }
