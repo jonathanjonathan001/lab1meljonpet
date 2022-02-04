@@ -3,16 +3,17 @@ import java.util.*;
 
 public class MrsTransporter extends Car {
 
-    private static final int MAX_CARS = 10;
+    private int maxCars;
     private final Ramp ramp = new Ramp(Ramp.RampState.UP);
-    private final Deque<Car> currentCars = new ArrayDeque<>(MAX_CARS);
+    private final Deque<Car> currentCars = new ArrayDeque<>(maxCars);
 
 
     /**
      * Creates a truck MrsTransporter
      */
-    public MrsTransporter() {
+    public MrsTransporter(int maxCars) {
         super(2, 125, 0, Color.blue, "MrsTransporter", TypeOfCar.TRUCK);
+        this.maxCars = maxCars;
         stopEngine();
     }
 

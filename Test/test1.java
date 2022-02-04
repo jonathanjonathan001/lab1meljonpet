@@ -21,7 +21,7 @@ public class test1 {
         testSaab95 = new Saab95();
         testVolvo240 = new Volvo240();
         testScania = new Scania();
-        testMrs = new MrsTransporter();
+        testMrs = new MrsTransporter(10);
         testMrs.getCurrentCars().clear();
         testMrs.lowerRamp();
         testSaabRepair = new RepairShop<Saab95>(10);
@@ -429,7 +429,7 @@ public class test1 {
         assertFalse(testSaabRepair.carsInShop.contains(testSaab95));
     }
 
-/*    @Test   //för redovisning - funkar inte och ska inte funka
+    /* @Test   //for redovisning - funkar inte och ska inte funka
     public void Saab95RepairShop_Volvo240IsNotLoaded_WhenTryingToLoadVolvo240() {
         testSaabRepair.load(testVolvo240);
         assertFalse(testSaabRepair.carsInShop.contains(testVolvo240));
