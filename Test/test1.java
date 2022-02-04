@@ -433,7 +433,7 @@ public class test1 {
     public void Saab95RepairShop_Volvo240IsNotLoaded_WhenTryingToLoadVolvo240() {
         testSaabRepair.load(testVolvo240);
         assertFalse(testSaabRepair.carsInShop.contains(testVolvo240));
-    }
-*/
+    } */
+
 
 }
