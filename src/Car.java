@@ -17,7 +17,7 @@ public abstract class Car implements Movable {
     public enum TypeOfCar {PERSONAL_CAR, TRUCK}
     public enum Direction {NORTH, EAST, SOUTH, WEST}
 
-    private Direction currentDirection = Direction.NORTH;
+    private Direction currentDirection = Direction.EAST;
     private double xPosition = 0;
     private double yPosition = 0;
 
