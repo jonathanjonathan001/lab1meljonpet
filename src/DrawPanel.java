@@ -19,6 +19,8 @@ public class DrawPanel extends JPanel{
     Point saab95Point = new Point();
     Point scaniaPoint = new Point();
 
+    CarController cc;
+
     // TODO: Make this general for all cars
     void moveit(int x, int y){
 
@@ -29,7 +31,8 @@ public class DrawPanel extends JPanel{
     }
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y) {
+    public DrawPanel(CarController cc, int x, int y) {
+        this.cc = cc;
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
