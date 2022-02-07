@@ -32,15 +32,14 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240());
-        //cc.cars.add(new Saab95());
-        //cc.cars.add(new Scania());
+
         //cc.cars.get(1).setyPosition(CAR_OFFSET);
         //cc.cars.get(2).setyPosition(2*CAR_OFFSET);
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
 
+        cc.init();
         // Start the timer
         cc.timer.start();
     }

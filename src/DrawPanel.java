@@ -21,8 +21,7 @@ public class DrawPanel extends JPanel{
 
     // TODO: Make this general for all cars
     void moveit(int x, int y){
-        volvoPoint.x = x;
-        volvoPoint.y = y;
+
         //saab95Point.x = x;
         //saab95Point.y = y;
         //scaniaPoint.x = x;
@@ -43,9 +42,8 @@ public class DrawPanel extends JPanel{
             // Remember to right-click src New -> Package -> name: pics -> MOVE *.jpg to pics.
             // if you are starting in IntelliJ.
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
-
-            //saab95Image = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
-            //scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
+            saab95Image = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
+            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
         } catch (IOException ex)
         {
             ex.printStackTrace();
@@ -58,9 +56,9 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
-        //g.drawImage(saab95Image, saab95Point.x, saab95Point.y, null);
-        //g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
 
+        for(int i = 0; i < cc.getCarImagesList().size(); i++){
+            g.drawImage(cc.getCarImagesList().get(i).getImage(), (int)cc.getCarImagesList().get(i).getX(), (int)cc.getCarImagesList().get(i).getY(), null); // see javadoc for more info on the parameters
+        }
     }
 }
