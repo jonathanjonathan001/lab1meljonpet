@@ -130,4 +130,16 @@ public class CarController {
             car.gas(gas);
         }
     }
+
+    void startAllCars(){
+        for (Car car: cars) {
+            car.startEngine();
+        }
+    }
+
+    void stopAllCars(){
+        for(Car car: cars){
+            car.stopEngine();
+        }
+    }
 }
