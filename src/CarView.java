@@ -51,10 +51,6 @@ public class CarView extends JFrame{
     JButton stopButton = new JButton("Stop all cars");
 
 
-    ArrayList<DrawableObject> carImageList;
-
-
-
     // Constructor
     public CarView(String framename, CarController cc){
         this.carC = cc;

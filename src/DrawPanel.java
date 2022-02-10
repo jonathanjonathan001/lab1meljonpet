@@ -15,9 +15,9 @@ public class DrawPanel extends JPanel{
     BufferedImage saab95Image;
     BufferedImage scaniaImage;
     // To keep track of a single cars position
-    Point volvoPoint = new Point();
+    /*Point volvoPoint = new Point();
     Point saab95Point = new Point();
-    Point scaniaPoint = new Point();
+    Point scaniaPoint = new Point();*/
 
     CarController cc;
 
@@ -29,6 +29,8 @@ public class DrawPanel extends JPanel{
         //scaniaPoint.x = x;
         //scaniaPoint.y = y;
     }
+
+
 
     // Initializes the panel and reads the images
     public DrawPanel(CarController cc, int x, int y) {

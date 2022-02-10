@@ -4,12 +4,15 @@ public class Scania extends Car {
 
     TruckBed truckBed = new TruckBed(0);
 
+   // ILiftable truckbed;
+
     /**
      * Creates a car Scania
      */
-    public Scania() {
+    public Scania(/*ILiftable truckBed*/) {
         super(2, 125, 0, Color.yellow, "Scania", TypeOfCar.TRUCK);
         stopEngine();
+       // this.truckBed = truckBed;
     }
 
     @Override
