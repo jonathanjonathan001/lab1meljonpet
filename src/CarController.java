@@ -7,9 +7,9 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 /*
-* This class represents the Controller part in the MVC pattern.
-* It's responsibilities is to listen to the View and responds in a appropriate manner by
-* modifying the model state and the updating the view.
+ * This class represents the Controller part in the MVC pattern.
+ * It's responsibilities is to listen to the View and responds in a appropriate manner by
+ * modifying the model state and the updating the view.
  */
 
 public class CarController {
@@ -42,19 +42,19 @@ public class CarController {
         }
     }*/
 
-    public ArrayList<DrawableObject> getCarImagesList(){
+    public ArrayList<DrawableObject> getCarImagesList() {
         return carImagesList;
     }
 
-    public Point findCarPoint(Car car){
-        return new Point((int)car.getxPosition(), (int)car.getyPosition());
+    public Point findCarPoint(Car car) {
+        return new Point((int) car.getxPosition(), (int) car.getyPosition());
     }
 
     public DrawableObject createDrawableObject(BufferedImage image, Car car) {
         return new DrawableObject(image, findCarPoint(car));
     }
 
-    public void init (){
+    public void init() {
         volvo240.setyPosition(0 * CAR_OFFSET);
         saab95.setyPosition(1 * CAR_OFFSET);
         scania.setyPosition(2 * CAR_OFFSET);
@@ -73,10 +73,6 @@ public class CarController {
 
         CarController cc = new CarController();
 
-
-        //cc.cars.get(1).setyPosition(CAR_OFFSET);
-        //cc.cars.get(2).setyPosition(2*CAR_OFFSET);
-
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
 
@@ -85,21 +81,22 @@ public class CarController {
         cc.timer.start();
     }
 
-    void updateCarImagesList (){
+    void updateCarImagesList() {
         carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, volvo240));
         carImagesList.add(createDrawableObject(frame.drawPanel.saab95Image, saab95));
         carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, scania));
     }
 
     /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
+     * view to update its images. Change this method to your needs.
+     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Car car : cars) {
                 int carImageWidth = frame.drawPanel.volvoImage.getWidth();
                 if (car.getxPosition() > (frame.getFrameX() - carImageWidth) || car.getxPosition() < 0) {
-                    car.turnLeft(); car.turnLeft();
+                    car.turnLeft();
+                    car.turnLeft();
                 }
                 car.move();
                 int x = (int) Math.round(car.getxPosition());
@@ -115,9 +112,9 @@ public class CarController {
         }
     }
 
-    void brake(int amount){
+    void brake(int amount) {
         double brake = ((double) amount / 100);
-        for (Car car : cars){
+        for (Car car : cars) {
             car.brake(brake);
         }
     }
@@ -126,19 +123,19 @@ public class CarController {
     void gas(int amount) {
         double gas = ((double) amount) / 100;
         for (Car car : cars
-                ) {
+        ) {
             car.gas(gas);
         }
     }
 
-    void startAllCars(){
-        for (Car car: cars) {
+    void startAllCars() {
+        for (Car car : cars) {
             car.startEngine();
         }
     }
 
-    void stopAllCars(){
-        for(Car car: cars){
+    void stopAllCars() {
+        for (Car car : cars) {
             car.stopEngine();
         }
     }

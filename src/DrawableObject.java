@@ -14,7 +14,6 @@ public class DrawableObject {
         return image;
     }
 
-
     public Point getPoint() {
         double x = point.getX();
         double y = point.getY();
