@@ -2,6 +2,6 @@ Om man vill använda ett interface "ILiftable" för att delegera anrop till meto
     Vi ville ge metoderna ett gemensamt namn "liftRamp" och sedan deklarera det i interfacet. Men hur funkar det då med vilka parametrar man ska ange i interfacet?
     Vi testade att göra två metoder med samma namn och olika signatur för respektive "Ramp" och "TruckBed" men då var vi tvugna att ha två implementationer av dem i båda klasserna...
 
-    TODO-grejerna, generalisering, vad ska vi göra denna veckan?
-    Om vi skriver ut alla bilar i drawPanel, varför syns bara den sista under körning?
 
+
+-

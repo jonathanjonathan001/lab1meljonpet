@@ -25,10 +25,10 @@ public class CarController {
     private Timer timer = new Timer(delay, new TimerListener());
 
     // The frame that represents this instance View of the MVC pattern
-    static CarView frame;
+    CarView frame;
     // A list of cars, modify if needed
-    static ArrayList<Car> cars = new ArrayList<>();
-    static ArrayList<DrawableObject> carImagesList = new ArrayList<>();
+    ArrayList<Car> cars = new ArrayList<>();
+    ArrayList<DrawableObject> carImagesList = new ArrayList<>();
 
     Volvo240 volvo240 = new Volvo240();
     Saab95 saab95 = new Saab95();
@@ -68,9 +68,9 @@ public class CarController {
         carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, scania));
     }
 
-
     public static void main(String[] args) {
         // Instance of this class
+
         CarController cc = new CarController();
 
 

@@ -48,7 +48,7 @@ public class MrsTransporter extends Car {
     @Override
     public void gas(double amount) {
         if (amount >= 0 && amount <= 1 && rampIsLifted()) {
-            incrementSpeed(amount);
+            super.gas(amount);
         }
     }
 
