@@ -1,0 +1,74 @@
+För den del av kodbasen som hanterar bilar:
+* DIP - vi har sett till att använda oss av abstraktion istället för specifika implementationer.
+    * på ett par ställen behövde vi overridea metoderna eftersom vissa bilar beter sig olika
+* Det finns starka beroenden eftersom att alla bilar är subtyp till Car. Men detta är nödvändigt.
+* Scania och MrsTransporter har attribut av truckbed respektive ramp
+    * Vi vill gärna försöka göra det snyggare genom att använda ett interface "ILiftable" på något sätt
+* Det är high cohesion, då alla komponenter samverkar för att utföra uppgiften av att representera bilar och deras funktionalitet.
+* Det är låg coupling, då det inte finns några pilar som pekar kors och tvärs inom denna del av programmet, samt att de pilar som är där har ett tydligt syfte.
+* Det finns beroenden från CarController vilket känns lite skumt. Men det vet inte bilarna om så det är snarare ett problem för CarController.
+
+CarController
+* Borde bara ta hand om att styra bilarna och ska användas av carview under körning
+    * nu har den både init, main och updateringsfunktionen TimerListener och skapar både lista med bilar och en lista med DrawableObjects.
+* Lösning skulle kunna vara att skapa en main klass som har hand om main, initiering av bilar och drawableobjects och sköter uppdateringen
+
+DrawPanel
+* borde bara ta hand om att rita ut bilarna
+
+CarView
+* CarView ska rita upp knapparna och binda dem till actions.
+
+
+__
+
+* Ansvaret för att representera bilar ligger hos Cars och dess subklasser
+    * Behövs inte ändras. Har en tydlig uppgift och genomtänkt synlighet -> Separation of Concern och Single Responsibitity Principle
+* Ansvaret för CarController är i nuläget: att skapa bilar, sköta main, init och att uppdatera programmet under körning
+    * Skulle behöva flytta ut main, init och uppdateringsfunktionaliteten till en annan klass (kanske en ny?)
+    * CarController bör bara behöva hantera bilar som den får.
+* CarView kopplar actions till knappar och ritar upp knapparna.
+    * bör vara UIn (rita upp dess knappar, panelen och allt som är visuellt)
+* DrawPanel ritar ut bilarnas bilder.
+    * har en konstig oanvänd moveIt() metod, som bör hanteras av CarController
+    * Bör hantera allt som har med bilarnas bilder att göra: updateCarImagesList och createDrawableObject
+
+* Open Closed Principle
+    * Hårdkodade bilar i CarController - det är inte bra!
+    * Eventuellt ha en ILiftable interface  i konstruktorerna hos MrsTransporter och Scania
+    * Draw panel - måste hårdkoda in nya bilder
+* Dependency inversion principle
+    * Håller inte pga att OCP inte håller
+* Separation of Concern & Single Responsibility Principle
+    * CarController har flera ansvarsområden
+    * CarView har nu hand om att både rita upp allt men också stå för logiken bakom knapparna... ny klass Buttons?
+* High cohesion Low Coupling
+    * DrawPanel bör inte behöva ta in en carcontroller. Enda syftet att ta in den nu är för att komma åt carImagesList
+    * CarController har kopplingar till enskilda bilar
+* Interface Segregation Principle (GRÄNSSNITT inte interface)
+    *
+* Law of Demeter / don't talk to strangers
+* Liskov Substitution Principle
+
+
+
+
+-- hjälp
+
+- CarView inte nödvändigtvis någon funktionalitet, bara displayar det som ska synas, logiken bakom knappar och sånt behöver inte vara där.
+- En klass till (Buttons?) för att sköta det?
+
+- Idéen om main-klass - bra, bör inte vara CarC som sätter igång skiten
+- Designmönster MVC? mer nästa vecka. Hur man delar upp kod på ett bra sätt, high cohesion & low coupling osv.
+- DIP: bra att car är abstrakt, vill inte bero på enskilda bilar i CarController, men inte nödvöndigt att ändra nu - kommer mer sen
+- Dependency injection: inte gått igenom så behöver inte tänka på det direkt
+
+- Tänk mer på uppgift 3, vad stämmer överens med designprinciperna, mest fokus på vad som INTE gör det, vill ju inte ändra på det som är bra
+- Väldigt cirkulärt beroende - INTE BRA.
+- Mer MVC, metoder för att följa designprinciperna.
+- Factory pattern, factory-klass som har hand om allt skapande av objekt
+    - lägger ansvaret någon annanstans, dom andra klasserna behöver inte veta något annat än att det sker någonstans
+
+
+
+
