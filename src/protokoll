@@ -53,7 +53,18 @@ __
 * Liskov Substitution Principle
     * car delen är den enda som har arv och Car klassen är tillräckligt generell för att inte bryta mot Liskov
 
+// TODO
+* CarController
+        * ArrayList <Car> och ArrayList <DrawableObject> borde vara "List" (för att följa DIP)
+        * Gör cars till en parametriserad lista <? extends Car> som kan "bli" en annan lista med elementstyp Car. Denna lista och instanserna av bilarna
+            skapas istället i Mainklassen. På så vis behöver inte CarController ansvara för att skapa bilar utan kan fokusera på att köra dem.
+* DrawPanel
+        * borde få in listan med bilar från Main och använda den för att koppla samman med bilder. Behöver därför också "createDrawableObject()" och "findCarPoint()"
+            från CarController.
+* CarView
+        *
 
+- Buttons-klass som CarController får ta in (eller tvärtom) så kopplandet av knappar och actions kan hanteras av någon annan än CarView
 
 -- hjälp
 
