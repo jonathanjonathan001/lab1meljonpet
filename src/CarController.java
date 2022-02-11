@@ -48,6 +48,8 @@ public class CarController {
         return new DrawableObject(image, findCarPoint(car));
     }
 
+    //nämensåattejorå!
+
     public void init() {
         volvo240.setyPosition(0 * CAR_OFFSET);
         saab95.setyPosition(1 * CAR_OFFSET);

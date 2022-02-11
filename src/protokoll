@@ -40,6 +40,7 @@ __
 * Dependency inversion principle: bero på abstraktioner, klasser ska inte bero på varandra
     * Håller inte pga att OCP inte håller
 * Separation of Concern & Single Responsibility Principle
+    * findCarPoint i CarController borde vara private (och antagligen i DrawPanel tillsammans med createDrawableObject)
     * CarController har flera ansvarsområden
     * CarView har nu hand om att både rita upp allt men också stå för logiken bakom knapparna... ny klass Buttons?
 * High cohesion Low Coupling

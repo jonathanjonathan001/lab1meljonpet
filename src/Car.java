@@ -15,6 +15,7 @@ public abstract class Car implements Movable {
 
 
     public enum TypeOfCar {PERSONAL_CAR, TRUCK}
+
     public enum Direction {NORTH, EAST, SOUTH, WEST}
 
     private Direction currentDirection = Direction.EAST;
@@ -39,7 +40,7 @@ public abstract class Car implements Movable {
         this.carType = carType;
     }
 
-    public TypeOfCar getCarType(){
+    public TypeOfCar getCarType() {
         return carType;
     }
 
@@ -231,7 +232,7 @@ public abstract class Car implements Movable {
         yPosition = y;
     }
 
-    public void setxPosition(double x){
+    public void setxPosition(double x) {
         xPosition = x;
     }
 }
