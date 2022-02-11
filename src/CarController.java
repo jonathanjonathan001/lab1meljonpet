@@ -36,12 +36,6 @@ public class CarController {
 
     //methods:
 
-  /*  void updateCarImagesList(){
-        for (Car car: cars) {
-            carImagesList.add(createDrawableObject(ImageIO.read(frame.DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg")), findCarPoint(car));
-        }
-    }*/
-
     public ArrayList<DrawableObject> getCarImagesList() {
         return carImagesList;
     }

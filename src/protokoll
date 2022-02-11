@@ -81,7 +81,3 @@ __
 - Mer MVC, metoder för att följa designprinciperna.
 - Factory pattern, factory-klass som har hand om allt skapande av objekt
     - lägger ansvaret någon annanstans, dom andra klasserna behöver inte veta något annat än att det sker någonstans
-
-
-
-
