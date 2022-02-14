@@ -62,8 +62,16 @@ __
 * DrawPanel
         * borde få in listan med bilar från Main och använda den för att koppla samman med bilder. Behöver därför också "createDrawableObject()" och "findCarPoint()"
             från CarController.
-* CarView
-        *
+* CarView (EDITED MÅNDAG)
+        * Om vi skapar en ny klass för Buttons, kan Buttons skapa en controlPanel som skapar alla knappar.
+        Den får också koppla alla knappar till actions.
+        Mer konkret flyttar vi allting som har med knappar och controlPanel att göra i initComponents (t.ex controlPanel.add(gasButton, 0);)
+        till Buttons, och den kommer i sin tur att fungera som DrawPanel i Carview, att vi kör en this.add(buttons) eller vafan den kommer heta
+        i initComponents (vilket den nu gör med controlPanel).
+        
+        
+        
+        
 
 - Buttons-klass som CarController får ta in (eller tvärtom) så kopplandet av knappar och actions kan hanteras av någon annan än CarView
 
@@ -82,3 +90,6 @@ __
 - Mer MVC, metoder för att följa designprinciperna.
 - Factory pattern, factory-klass som har hand om allt skapande av objekt
     - lägger ansvaret någon annanstans, dom andra klasserna behöver inte veta något annat än att det sker någonstans
+
+
+
