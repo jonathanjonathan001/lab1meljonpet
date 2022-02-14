@@ -56,7 +56,7 @@ __
 
 // TODO
 * CarController
-        * ArrayList <Car> och ArrayList <DrawableObject> borde vara "List" (för att följa DIP)
+        X* ArrayList <Car> och ArrayList <DrawableObject> borde vara "List" (för att följa DIP)
         * Gör cars till en parametriserad lista <? extends Car> som kan "bli" en annan lista med elementstyp Car. Denna lista och instanserna av bilarna
             skapas istället i Mainklassen. På så vis behöver inte CarController ansvara för att skapa bilar utan kan fokusera på att köra dem.
 * DrawPanel
