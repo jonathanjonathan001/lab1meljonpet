@@ -37,21 +37,43 @@ __
     * Hårdkodade bilar i CarController - det är inte bra!
     * Eventuellt ha en ILiftable interface  i konstruktorerna hos MrsTransporter och Scania
     * Draw panel - måste hårdkoda in nya bilder
-* Dependency inversion principle
+* Dependency inversion principle: bero på abstraktioner, klasser ska inte bero på varandra
     * Håller inte pga att OCP inte håller
 * Separation of Concern & Single Responsibility Principle
+    * findCarPoint i CarController borde vara private (och antagligen i DrawPanel tillsammans med createDrawableObject)
     * CarController har flera ansvarsområden
     * CarView har nu hand om att både rita upp allt men också stå för logiken bakom knapparna... ny klass Buttons?
 * High cohesion Low Coupling
     * DrawPanel bör inte behöva ta in en carcontroller. Enda syftet att ta in den nu är för att komma åt carImagesList
     * CarController har kopplingar till enskilda bilar
 * Interface Segregation Principle (GRÄNSSNITT inte interface)
-    *
+    * Borde vi inte kunna extenda JComponent istället för JPanel i DrawPanel. Eftersom att vi inte använder något särskilt från JPanel utan tar
+    paintComponent metoden direkt från JComponent så borde det vara bättre att slippa implementera en subklass. Framen blir dock inte grön när vi testar att byta...???
 * Law of Demeter / don't talk to strangers
+    * på rad 66 och 96 i CarController behöver vi kalla på frame.drawpanel.någonImage.getWidth();
 * Liskov Substitution Principle
+    * car delen är den enda som har arv och Car klassen är tillräckligt generell för att inte bryta mot Liskov
 
+// TODO
+* CarController
+        X* ArrayList <Car> och ArrayList <DrawableObject> borde vara "List" (för att följa DIP)
+        * Gör cars till en parametriserad lista <? extends Car> som kan "bli" en annan lista med elementstyp Car. Denna lista och instanserna av bilarna
+            skapas istället i Mainklassen. På så vis behöver inte CarController ansvara för att skapa bilar utan kan fokusera på att köra dem.
+* DrawPanel
+        * borde få in listan med bilar från Main och använda den för att koppla samman med bilder. Behöver därför också "createDrawableObject()" och "findCarPoint()"
+            från CarController.
+* CarView (EDITED MÅNDAG)
+        * Om vi skapar en ny klass för Buttons, kan Buttons skapa en controlPanel som skapar alla knappar.
+        Den får också koppla alla knappar till actions.
+        Mer konkret flyttar vi allting som har med knappar och controlPanel att göra i initComponents (t.ex controlPanel.add(gasButton, 0);)
+        till Buttons, och den kommer i sin tur att fungera som DrawPanel i Carview, att vi kör en this.add(buttons) eller vafan den kommer heta
+        i initComponents (vilket den nu gör med controlPanel).
+        
+        
+        
+        
 
-
+- Buttons-klass som CarController får ta in (eller tvärtom) så kopplandet av knappar och actions kan hanteras av någon annan än CarView
 
 -- hjälp
 
@@ -68,7 +90,6 @@ __
 - Mer MVC, metoder för att följa designprinciperna.
 - Factory pattern, factory-klass som har hand om allt skapande av objekt
     - lägger ansvaret någon annanstans, dom andra klasserna behöver inte veta något annat än att det sker någonstans
-
 
 
 
