@@ -54,6 +54,8 @@ public class DrawPanel extends JComponent{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        List<DrawableObject> carImagesList = Main.carImagesList;
+
         for (DrawableObject drawableObject : carImagesList) {
             g.drawImage(drawableObject.getImage(), (int) drawableObject.getX(), (int) drawableObject.getY(), null); // see javadoc for more info on the parameters
         }

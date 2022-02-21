@@ -28,8 +28,7 @@ public class CarController {
     void gas(int amount) {
         List<Car> cars = Main.getCars();
         double gas = ((double) amount) / 100;
-        for (Car car : cars
-        ) {
+        for (Car car : cars) {
             car.gas(gas);
         }
     }
