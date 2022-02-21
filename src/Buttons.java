@@ -118,7 +118,5 @@ public class Buttons extends JPanel {
                 carController.stopAllCars();
             }
         });
-
     }
-
 }
