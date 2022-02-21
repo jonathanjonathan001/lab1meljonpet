@@ -33,24 +33,9 @@ public class CarView extends JFrame{
 
     DrawPanel drawPanel;
 
-    JPanel controlPanel = new JPanel();
-
     JPanel gasPanel = new JPanel();
-    JSpinner gasSpinner = new JSpinner();
-    JLabel gasLabel = new JLabel("Amount of gas");
 
-    JButton gasButton = new JButton("Gas");
-    JButton brakeButton = new JButton("Brake");
-    JButton turboOnButton = new JButton("Saab Turbo on");
-    JButton turboOffButton = new JButton("Saab Turbo off");
-    JButton liftBedButton = new JButton("Scania Lift Bed");
-    JButton lowerBedButton = new JButton("Lower Lift Bed");
-
-    JButton startButton = new JButton("Start all cars");
-    JButton stopButton = new JButton("Stop all cars");
-
-    int gasAmount = 0;
-    //Buttons buttons;
+    Buttons buttons;
 
 
     // Constructor
@@ -74,21 +59,12 @@ public class CarView extends JFrame{
 
         this.add(drawPanel);
 
-        SpinnerModel spinnerModel =
-                new SpinnerNumberModel(0, //initial value
-                        0, //min
-                        100, //max
-                        1);//step
-        gasSpinner = new JSpinner(spinnerModel);
-        gasSpinner.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                gasAmount = (int) ((JSpinner)e.getSource()).getValue();
-            }
-        });
+        this.add(buttons);
+        buttons.initButtons();
 
         gasPanel.setLayout(new BorderLayout());
-        gasPanel.add(gasLabel, BorderLayout.PAGE_START);
-        gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
+        gasPanel.add(buttons.gasLabel, BorderLayout.PAGE_START);
+        gasPanel.add(buttons.gasSpinner, BorderLayout.PAGE_END);
 
         this.add(gasPanel);
 

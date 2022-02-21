@@ -135,9 +135,9 @@ __
 Refaktoriseringsplan
 --------------------
 
-1. Skapa en klass CarFactory och koppla till CarController (först för att se att det funkar)
-2. Skapa Buttonsklassen och refaktoriserar motsvarande kod i CarView
-3. Ge CarView ett attribut "buttons"
+1.X? Skapa en klass CarFactory och koppla till CarController (först för att se att det funkar)
+2.X Skapa Buttonsklassen och refaktoriserar motsvarande kod i CarView
+3.X Ge CarView ett attribut "buttons"
 4. Skapa interfacet ILiftable
 5. Skapa Mainklassen och flytta över motsvarande kod från CarController
     Main måste också ha rätt attribut och motsvarande kan plockas bort från CarController
