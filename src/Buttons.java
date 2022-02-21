@@ -79,29 +79,28 @@ public class Buttons extends JPanel {
 
         liftBedButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                carController.scania.liftTruckBed(70);
+            public void actionPerformed(ActionEvent e) { carController.lift(70);
             }
         });
 
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carController.scania.lowerTruckBed(70);
+                carController.lower(70);
             }
         });
 
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carController.saab95.setTurboOn();
+                carController.turboOn();
             }
         });
 
         turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carController.saab95.setTurboOff();
+                carController.turboOff();
             }
         });
 

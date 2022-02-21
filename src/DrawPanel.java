@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.List;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -30,8 +31,6 @@ public class DrawPanel extends JComponent{
         //scaniaPoint.y = y;
     }
 
-
-
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
         // this.cc = cc;
@@ -55,8 +54,8 @@ public class DrawPanel extends JComponent{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        for(int i = 0; i < cc.getCarImagesList().size(); i++){
-            g.drawImage(cc.getCarImagesList().get(i).getImage(), (int)cc.getCarImagesList().get(i).getX(), (int)cc.getCarImagesList().get(i).getY(), null); // see javadoc for more info on the parameters
+        for (DrawableObject drawableObject : carImagesList) {
+            g.drawImage(drawableObject.getImage(), (int) drawableObject.getX(), (int) drawableObject.getY(), null); // see javadoc for more info on the parameters
         }
     }
 }
