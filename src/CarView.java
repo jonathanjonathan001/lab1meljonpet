@@ -57,6 +57,8 @@ public class CarView extends JFrame{
     public CarView(String framename, CarController cc){
         this.carC = cc;
 
+        buttons = new Buttons(carC);
+
         drawPanel = new DrawPanel(carC, X, Y-240);
         initComponents(framename);
     }
@@ -90,87 +92,14 @@ public class CarView extends JFrame{
 
         this.add(gasPanel);
 
-        controlPanel.setLayout(new GridLayout(2,4));
+        buttons.controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
+        this.add(buttons.controlPanel);
 
-        controlPanel.add(gasButton, 0);
-        controlPanel.add(turboOnButton, 1);
-        controlPanel.add(liftBedButton, 2);
-        controlPanel.add(brakeButton, 3);
-        controlPanel.add(turboOffButton, 4);
-        controlPanel.add(lowerBedButton, 5);
-        controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
-        this.add(controlPanel);
-        controlPanel.setBackground(Color.CYAN);
+        buttons.startButton.setPreferredSize(new Dimension(X/5-15,200));
+        this.add(buttons.startButton);
 
-
-        startButton.setBackground(Color.blue);
-        startButton.setForeground(Color.green);
-        startButton.setPreferredSize(new Dimension(X/5-15,200));
-        this.add(startButton);
-
-
-        stopButton.setBackground(Color.red);
-        stopButton.setForeground(Color.black);
-        stopButton.setPreferredSize(new Dimension(X/5-15,200));
-        this.add(stopButton);
-
-        // This actionListener is for the gas button only
-        brakeButton.addActionListener((new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.brake(gasAmount);
-            }
-        }));
-
-        gasButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.gas(gasAmount);
-            }
-        });
-
-        liftBedButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.scania.liftTruckBed(70);
-            }
-        });
-
-        lowerBedButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.scania.lowerTruckBed(70);
-            }
-        });
-
-        turboOnButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.saab95.setTurboOn();
-            }
-        });
-
-        turboOffButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.saab95.setTurboOff();
-            }
-        });
-
-        startButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.startAllCars();
-            }
-        });
-
-        stopButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.stopAllCars();
-            }
-        });
-
+        buttons.stopButton.setPreferredSize(new Dimension(X/5-15,200));
+        this.add(buttons.stopButton);
 
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();

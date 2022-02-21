@@ -15,7 +15,7 @@ public class Buttons extends JPanel {
 
     int gasAmount = 0;
 
-    public Buttons(CarController carController, int gasAmount) {
+    public Buttons(CarController carController) {
         this.carController = carController;
         this.gasAmount = gasAmount;
     }
