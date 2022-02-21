@@ -30,9 +30,9 @@ public class CarController {
     ArrayList<Car> cars = new ArrayList<>();
     ArrayList<DrawableObject> carImagesList = new ArrayList<>();
 
-    Volvo240 volvo240 = new Volvo240();
-    Saab95 saab95 = new Saab95();
-    Scania scania = new Scania();
+    Volvo240 volvo240;
+    Saab95 saab95;
+    Scania scania;
 
     //methods:
 
@@ -51,17 +51,22 @@ public class CarController {
     //nämensåattejorå!
 
     public void init() {
-        volvo240.setyPosition(0 * CAR_OFFSET);
-        saab95.setyPosition(1 * CAR_OFFSET);
-        scania.setyPosition(2 * CAR_OFFSET);
+
+        volvo240 = CarFactory.createVolvo240();
+        saab95 = CarFactory.createSaab95();
+        scania = CarFactory.createScania();
 
         cars.add(volvo240);
         cars.add(saab95);
         cars.add(scania);
 
-        carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, volvo240));
-        carImagesList.add(createDrawableObject(frame.drawPanel.saab95Image, saab95));
-        carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, scania));
+        cars.get(0).setyPosition(0 * CAR_OFFSET);
+        cars.get(1).setyPosition(1 * CAR_OFFSET);
+        cars.get(2).setyPosition(2 * CAR_OFFSET);
+
+        carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, cars.get(0)));
+        carImagesList.add(createDrawableObject(frame.drawPanel.saab95Image, cars.get(1)));
+        carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, cars.get(2)));
     }
 
     public static void main(String[] args) {
@@ -77,10 +82,14 @@ public class CarController {
         cc.timer.start();
     }
 
+    public ArrayList<Car> getCars(){
+        return cars;
+    }
+
     void updateCarImagesList() {
-        carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, volvo240));
-        carImagesList.add(createDrawableObject(frame.drawPanel.saab95Image, saab95));
-        carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, scania));
+        carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, cars.get(0)));
+        carImagesList.add(createDrawableObject(frame.drawPanel.saab95Image, cars.get(1)));
+        carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, cars.get(2)));
     }
 
     /* Each step the TimerListener moves all the cars in the list and tells the

@@ -93,3 +93,61 @@ __
 
 
 
+
+	Open Closed Principle
+		○ Hårdkodade bilar i CarController - det är inte bra!
+			§ Löst genom att använda klassen CarFactory
+		○ MrsTransporter och Scania starka beroenden av specifika sorters ramp/truckbed
+			§ Löst genom att ha en ILiftable interface i konstruktorerna hos MrsTransporter och Scania
+				□ MrsTransporter och Scania har alltså attribut av typen ILiftable
+		○ Draw panel - måste hårdkoda in nya bilder
+			§ Löst genom att skapa en CarVisualizer klass som håller en filepath och en koordinat för bilen
+
+	Dependency inversion principle: bero på abstraktioner, klasser ska inte bero på varandra
+		○ Håller inte pga att OCP inte håller
+			§ Lösningarna till OCP kommer från DIP
+
+	Separation of Concern & Single Responsibility Principle
+		○ findCarPoint i CarController borde vara private
+			§ Behövs inte då vi istället för DrawableObject använder CarVisualizer som sker i Main
+		○ CarController har flera ansvarsområden
+			§ Löst genom att skapa CarFactory klass och en Main klass
+		○ CarView har nu hand om att både rita upp allt men också stå för logiken bakom knapparna
+			§ Löst genom att skapa ny klass Buttons
+
+	High cohesion Low Coupling
+		○ DrawPanel bör inte behöva ta in en carcontroller. Enda syftet att ta in den nu är för att komma åt carImagesList
+			§ Löst genom att CarVisualizer som håller en sökväg beroende av typ av bil
+		○ CarController har kopplingar till enskilda bilar
+			§ Löst med CarFactory
+
+	Interface Segregation Principle (GRÄNSSNITT inte interface)
+		○ Borde vi inte kunna extenda JComponent istället för JPanel i DrawPanel. Eftersom att vi inte använder något särskilt från JPanel utan tar paintComponent metoden direkt från JComponent så borde det vara bättre att slippa implementera en subklass. Framen blir dock inte grön när vi testar att byta...
+
+	Law of Demeter / don't talk to strangers
+		○  på rad 62 och 92 i CarController behöver vi kalla på frame.drawpanel.någonImage.getWidth();
+			§ Löst genom att flytta TimerListener klassen in i Main klassen som ju redan har info om bilderna.
+
+	Liskov Substitution Principle
+		○ car delen är den enda som har arv och Car klassen är tillräckligt generell för att inte bryta mot Liskov
+
+--------------------
+Refaktoriseringsplan
+--------------------
+
+1. Skapa en klass CarFactory och koppla till CarController (först för att se att det funkar)
+2. Skapa Buttonsklassen och refaktoriserar motsvarande kod i CarView
+3. Ge CarView ett attribut "buttons"
+4. Skapa interfacet ILiftable
+5. Skapa Mainklassen och flytta över motsvarande kod från CarController
+    Main måste också ha rätt attribut och motsvarande kan plockas bort från CarController
+6. Skapa CarVisualizer och dess subtyper
+7. Implementera createCarVisualizerList i Main.
+8. Skriv om paintComponent-metoden i DrawPanel så att den kan arbeta med CarVisualizer istället för DrawableObject
+9. Ta bort instansen av CarController i DrawPanel. (Då bredden på bilderna finns i Main och Main har en instans av DrawPanel)
+10. Ta bort DrawableObject klassen
+11. Skriv om implementationen av TimerListener, updateCarImagesList och init-metoden.
+
+Kan göras parallellt:
+Punkt 1 och 2
+Punkt 3 och 4
