@@ -1,0 +1,122 @@
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class Main {
+
+    private final static int CAR_OFFSET = 100;
+    private final static int delay = 50;
+
+    static List<Car> cars = new ArrayList<>();
+    static List<Car> trucks = new ArrayList<>();
+    static List<Car> saab95s = new ArrayList<>();
+
+    static List<DrawableObject> carImagesList = new ArrayList<>();
+
+    public List<DrawableObject> getCarImagesList() {
+        return carImagesList;
+    }
+
+    public static Point findCarPoint(Car car) {
+        return new Point((int) car.getxPosition(), (int) car.getyPosition());
+    }
+
+    public static DrawableObject createDrawableObject(BufferedImage image, Car car) {
+        return new DrawableObject(image, findCarPoint(car));
+    }
+
+    public static List<Car> getCars(){
+        return cars;
+    }
+    public static List<Car> getTrucks() {return trucks;}
+    public static List<Car> getSaab95s() {return saab95s;}
+
+    static void updateCarImagesList(CarView frame) {
+        carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, cars.get(0)));
+        carImagesList.add(createDrawableObject(frame.drawPanel.saab95Image, cars.get(1)));
+        carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, cars.get(2)));
+    }
+
+    private static List<Car> makeSublistOfTrucks(){
+        for (Car car: cars) {
+            if (car.getCarType() == Car.TypeOfCar.TRUCK) {
+                trucks.add(car);
+            }
+        }
+        return trucks;
+    }
+
+    public static void init(CarView frame) {
+
+        Volvo240 volvo240 = CarFactory.createVolvo240();
+        Saab95 saab95 = CarFactory.createSaab95();
+        Scania scania = CarFactory.createScania();
+
+        cars.add(volvo240);
+        cars.add(saab95);
+        cars.add(scania);
+
+        List<Car> trucks = makeSublistOfTrucks();
+
+        cars.get(0).setyPosition(0 * CAR_OFFSET);
+        cars.get(1).setyPosition(1 * CAR_OFFSET);
+        cars.get(2).setyPosition(2 * CAR_OFFSET);
+
+        carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, cars.get(0)));
+        carImagesList.add(createDrawableObject(frame.drawPanel.saab95Image, cars.get(1)));
+        carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, cars.get(2)));
+    }
+
+    public static void main(String[] args) {
+        // Instance of this class
+
+        CarController cc = new CarController();
+
+        // Start a new view and send a reference of self
+        CarView frame = new CarView("CarSim 1.0", cc);
+        Timer timer = new Timer(delay, new TimerListener(frame));
+
+        init(frame);
+        // Start the timer
+        timer.start();
+    }
+
+    /* Each step the TimerListener moves all the cars in the list and tells the
+     * view to update its images. Change this method to your needs.
+     * */
+    private static class TimerListener implements ActionListener {
+
+        private CarView frame;
+
+        public TimerListener (CarView frame){
+            this.frame = frame;
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            for (Car car : cars) {
+                int carImageWidth = frame.drawPanel.volvoImage.getWidth();
+                if (car.getxPosition() > (frame.getFrameX() - carImageWidth) || car.getxPosition() < 0) {
+                    car.turnLeft();
+                    car.turnLeft();
+                }
+                car.move();
+                int x = (int) Math.round(car.getxPosition());
+                int y = (int) Math.round(car.getyPosition());
+
+                carImagesList.clear();
+                updateCarImagesList(frame);
+
+                frame.drawPanel.moveit(x, y);
+                // repaint() calls the paintComponent method of the panel
+                frame.drawPanel.repaint();
+            }
+        }
+    }
+
+}

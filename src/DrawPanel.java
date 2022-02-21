@@ -33,8 +33,8 @@ public class DrawPanel extends JComponent{
 
 
     // Initializes the panel and reads the images
-    public DrawPanel(CarController cc, int x, int y) {
-        this.cc = cc;
+    public DrawPanel(int x, int y) {
+        // this.cc = cc;
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
