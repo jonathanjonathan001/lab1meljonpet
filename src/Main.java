@@ -17,32 +17,32 @@ public class Main {
     static List<Car> trucks = new ArrayList<>();
     static List<Car> saab95s = new ArrayList<>();
 
-    static List<DrawableObject> carImagesList = new ArrayList<>();
+   /* static List<DrawableObject> carImagesList = new ArrayList<>();
 
     public List<DrawableObject> getCarImagesList() {
         return carImagesList;
-    }
+    }*/
 
     public static Point findCarPoint(Car car) {
         return new Point((int) car.getxPosition(), (int) car.getyPosition());
     }
-
+/*
     public static DrawableObject createDrawableObject(BufferedImage image, Car car) {
         return new DrawableObject(image, findCarPoint(car));
-    }
+    }*/
 
     public static List<Car> getCars(){
         return cars;
     }
     public static List<Car> getTrucks() {return trucks;}
     public static List<Car> getSaab95s() { return saab95s; }
-
+/*
     static void updateCarImagesList(CarView frame) {
         carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, cars.get(0)));
         carImagesList.add(createDrawableObject(frame.drawPanel.saab95Image, cars.get(1)));
         carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, cars.get(2)));
     }
-
+*/
     private static List<Car> makeSublistOfSaab95(){
         for (Car car: cars) {
             if (car.getModelName().equals("Saab95")) {
@@ -86,13 +86,14 @@ public class Main {
     public static void main(String[] args) {
         // Instance of this class
 
+        init();
+
         CarController cc = new CarController();
 
         // Start a new view and send a reference of self
         CarView frame = new CarView("CarSim 1.0", cc);
         Timer timer = new Timer(delay, new TimerListener(frame));
 
-        init(frame);
         // Start the timer
         timer.start();
     }
@@ -128,5 +129,4 @@ public class Main {
             }
         }
     }
-
 }
