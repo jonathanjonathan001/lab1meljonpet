@@ -139,13 +139,13 @@ Refaktoriseringsplan
 1.X? Skapa en klass CarFactory och koppla till CarController (först för att se att det funkar)
 2.X Skapa Buttonsklassen och refaktoriserar motsvarande kod i CarView
 3.X Ge CarView ett attribut "buttons"
-4. Skapa interfacet ILiftable
-5. Skapa Mainklassen och flytta över motsvarande kod från CarController
+4.? Skapa interfacet ILiftable
+5.X Skapa Mainklassen och flytta över motsvarande kod från CarController
     Main måste också ha rätt attribut och motsvarande kan plockas bort från CarController
 
-6. Skapa CarVisualizer och dess subtyper
-7. Implementera createCarVisualizerList i Main.
-8. Skriv om paintComponent-metoden i DrawPanel så att den kan arbeta med CarVisualizer istället för DrawableObject
+6.X Skapa CarVisualizer och dess subtyper
+7.X Implementera createCarVisualizerList i Main.
+8.X Skriv om paintComponent-metoden i DrawPanel så att den kan arbeta med CarVisualizer istället för DrawableObject
 9. Ta bort instansen av CarController i DrawPanel. (Då bredden på bilderna finns i Main och Main har en instans av DrawPanel)
 10. Ta bort DrawableObject klassen
 11. Skriv om implementationen av TimerListener, updateCarImagesList och init-metoden.
