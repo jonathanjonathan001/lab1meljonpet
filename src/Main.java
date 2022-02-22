@@ -35,7 +35,7 @@ public class Main {
         return cars;
     }
     public static List<Car> getTrucks() {return trucks;}
-    public static List<Car> getSaab95s() {return saab95s;}
+    public static List<Car> getSaab95s() { return saab95s; }
 
     static void updateCarImagesList(CarView frame) {
         carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, cars.get(0)));
