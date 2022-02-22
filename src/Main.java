@@ -43,6 +43,15 @@ public class Main {
         carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, cars.get(2)));
     }
 
+    private static List<Car> makeSublistOfSaab95(){
+        for (Car car: cars) {
+            if (car.getModelName().equals("Saab95")) {
+                saab95s.add(car);
+            }
+        }
+        return saab95s;
+    }
+
     private static List<Car> makeSublistOfTrucks(){
         for (Car car: cars) {
             if (car.getCarType() == Car.TypeOfCar.TRUCK) {
@@ -63,6 +72,7 @@ public class Main {
         cars.add(scania);
 
         List<Car> trucks = makeSublistOfTrucks();
+        List<Car> saab95s = makeSublistOfSaab95();
 
         cars.get(0).setyPosition(0 * CAR_OFFSET);
         cars.get(1).setyPosition(1 * CAR_OFFSET);
