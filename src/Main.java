@@ -17,6 +17,36 @@ public class Main {
     static List<Car> trucks = new ArrayList<>();
     static List<Car> saab95s = new ArrayList<>();
 
+    private static List<CarVisualizer> carVisualizerList = new ArrayList<>();
+
+    public static List<CarVisualizer> getCarVisualizerList(){
+        return carVisualizerList;
+    }
+
+    public static void createCarVisualizerList(){
+
+        Point volvo240Point = new Point((int)cars.get(0).getxPosition(),(int)cars.get(0).getyPosition());
+        Volvo240Visualizer volvo240Visualizer = new Volvo240Visualizer(volvo240Point);
+
+        Point saab95Point = new Point((int)cars.get(1).getxPosition(),(int)cars.get(1).getyPosition());
+        Saab95Visualizer saab95Visualizer = new Saab95Visualizer(saab95Point);
+
+        Point scaniaPoint = new Point((int)cars.get(2).getxPosition(),(int)cars.get(2).getyPosition());
+        ScaniaVisualizer scaniaVisualizer = new ScaniaVisualizer(scaniaPoint);
+
+        carVisualizerList.add(volvo240Visualizer);
+        carVisualizerList.add(saab95Visualizer);
+        carVisualizerList.add(scaniaVisualizer);
+    }
+
+    public static void updateCarVisualizerList(){
+        for (int i = 0; i < carVisualizerList.size(); i++) {
+            int xPos = (int)cars.get(i).getxPosition();
+            int yPos = (int)cars.get(i).getyPosition();
+            carVisualizerList.get(i).setOriginPoint(new Point(xPos, yPos));
+        }
+    }
+
    /* static List<DrawableObject> carImagesList = new ArrayList<>();
 
     public List<DrawableObject> getCarImagesList() {
@@ -61,7 +91,7 @@ public class Main {
         return trucks;
     }
 
-    public static void init(CarView frame) {
+    public static void init() {
 
         Volvo240 volvo240 = CarFactory.createVolvo240();
         Saab95 saab95 = CarFactory.createSaab95();
@@ -78,9 +108,11 @@ public class Main {
         cars.get(1).setyPosition(1 * CAR_OFFSET);
         cars.get(2).setyPosition(2 * CAR_OFFSET);
 
-        carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, cars.get(0)));
+        createCarVisualizerList();
+
+     /*   carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, cars.get(0)));
         carImagesList.add(createDrawableObject(frame.drawPanel.saab95Image, cars.get(1)));
-        carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, cars.get(2)));
+        carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, cars.get(2)));*/
     }
 
     public static void main(String[] args) {
@@ -120,8 +152,10 @@ public class Main {
                 int x = (int) Math.round(car.getxPosition());
                 int y = (int) Math.round(car.getyPosition());
 
-                carImagesList.clear();
-                updateCarImagesList(frame);
+
+                updateCarVisualizerList();
+           /*     carImagesList.clear();
+                updateCarImagesList(frame);*/
 
                 // frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
