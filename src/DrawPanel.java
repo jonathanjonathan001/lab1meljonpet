@@ -1,3 +1,4 @@
+
 import java.awt.*;
 import java.util.List;
 import java.awt.image.BufferedImage;
@@ -15,21 +16,10 @@ public class DrawPanel extends JComponent{
     BufferedImage volvoImage;
     BufferedImage saab95Image;
     BufferedImage scaniaImage;
-    // To keep track of a single cars position
-    /*Point volvoPoint = new Point();
-    Point saab95Point = new Point();
-    Point scaniaPoint = new Point();*/
 
-    CarController cc;
 
-    // TODO: Make this general for all cars
-    void moveit(int x, int y){
-
-        //saab95Point.x = x;
-        //saab95Point.y = y;
-        //scaniaPoint.x = x;
-        //scaniaPoint.y = y;
-    }
+    //CarController cc;
+    private List<CarVisualizer> carVisualizerList = Main.getCarVisualizerList();
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
@@ -54,9 +44,13 @@ public class DrawPanel extends JComponent{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        List<DrawableObject> carImagesList = Main.carImagesList;
+        // List<DrawableObject> carImagesList = Main.carImagesList;
 
-        for (DrawableObject drawableObject : carImagesList) {
+        g.drawImage(volvoImage, carVisualizerList.get(0).getOriginPoint().x, carVisualizerList.get(0).getOriginPoint().y, null);
+        g.drawImage(saab95Image, carVisualizerList.get(1).getOriginPoint().x, carVisualizerList.get(1).getOriginPoint().y, null);
+        g.drawImage(scaniaImage, carVisualizerList.get(2).getOriginPoint().x, carVisualizerList.get(2).getOriginPoint().y, null);
+
+        /*for (DrawableObject drawableObject : carImagesList) {
             g.drawImage(drawableObject.getImage(), (int) drawableObject.getX(), (int) drawableObject.getY(), null); // see javadoc for more info on the parameters
         }
     }
