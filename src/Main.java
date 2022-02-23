@@ -17,11 +17,11 @@ public class Main {
     static List<Car> trucks = new ArrayList<>();
     static List<Car> saab95s = new ArrayList<>();
 
-    private static List<CarVisualizer> carVisualizerList = new ArrayList<>();
+   // private static List<CarVisualizer> carVisualizerList = new ArrayList<>();
 
-    public static List<CarVisualizer> getCarVisualizerList(){
+    /*public static List<CarVisualizer> getCarVisualizerList(){
         return carVisualizerList;
-    }
+    }*/
 
     /* public static void createCarVisualizerList(){
 
@@ -66,13 +66,13 @@ public class Main {
     }
     public static List<Car> getTrucks() {return trucks;}
     public static List<Car> getSaab95s() { return saab95s; }
-/*
+
     static void updateCarImagesList(CarView frame) {
         carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, cars.get(0)));
         carImagesList.add(createDrawableObject(frame.drawPanel.saab95Image, cars.get(1)));
         carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, cars.get(2)));
     }
-*/
+
     private static List<Car> makeSublistOfSaab95(){
         for (Car car: cars) {
             if (car.getModelName().equals("Saab95")) {
@@ -110,9 +110,9 @@ public class Main {
 
         createCarVisualizerList();
 
-     /*   carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, cars.get(0)));
+        carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, cars.get(0)));
         carImagesList.add(createDrawableObject(frame.drawPanel.saab95Image, cars.get(1)));
-        carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, cars.get(2)));*/
+        carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, cars.get(2)));
     }
 
     public static void main(String[] args) {
