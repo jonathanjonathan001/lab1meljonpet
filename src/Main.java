@@ -121,8 +121,10 @@ public class Main {
 
         CarController cc = new CarController();
 
+
+
         // Start a new view and send a reference of self
-        CarView frame = new CarView("CarSim 1.0", cc);
+        CarView frame = new CarView("CarSim 1.0", new Buttons(cc));
         Timer timer = new Timer(delay, new TimerListener(frame));
 
         init(frame);
