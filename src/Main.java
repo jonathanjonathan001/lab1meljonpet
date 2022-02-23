@@ -39,8 +39,8 @@ public class Main {
         carVisualizerList.add(scaniaVisualizer);
     } */
 
-    public static void updateCarVisualizerList(){
-        for (int i = 0; i < carVisualizerList.size(); i++) {
+   /*  public static void updateCarVisualizerList(){
+        for (int i = 0; i < cars.size(); i++) {
             int xPos = (int)cars.get(i).getxPosition();
             int yPos = (int)cars.get(i).getyPosition();
             carVisualizerList.get(i).setOriginPoint(new Point(xPos, yPos));
@@ -91,7 +91,7 @@ public class Main {
         return trucks;
     }
 
-    public static void init() {
+    public static void init(CarView frame) {
 
         Volvo240 volvo240 = CarFactory.createVolvo240();
         Saab95 saab95 = CarFactory.createSaab95();
@@ -108,7 +108,7 @@ public class Main {
         cars.get(1).setyPosition(1 * CAR_OFFSET);
         cars.get(2).setyPosition(2 * CAR_OFFSET);
 
-        createCarVisualizerList();
+       // createCarVisualizerList();
 
         carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, cars.get(0)));
         carImagesList.add(createDrawableObject(frame.drawPanel.saab95Image, cars.get(1)));
@@ -118,7 +118,6 @@ public class Main {
     public static void main(String[] args) {
         // Instance of this class
 
-        init();
 
         CarController cc = new CarController();
 
@@ -126,6 +125,7 @@ public class Main {
         CarView frame = new CarView("CarSim 1.0", cc);
         Timer timer = new Timer(delay, new TimerListener(frame));
 
+        init(frame);
         // Start the timer
         timer.start();
     }
@@ -153,9 +153,9 @@ public class Main {
                 int y = (int) Math.round(car.getyPosition());
 
 
-                updateCarVisualizerList();
-           /*     carImagesList.clear();
-                updateCarImagesList(frame);*/
+            //    updateCarVisualizerList();
+                carImagesList.clear();
+                updateCarImagesList(frame);
 
                 // frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
