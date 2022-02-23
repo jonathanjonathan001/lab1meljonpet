@@ -49,6 +49,7 @@ public class Main {
 
     static List<DrawableObject> carImagesList = new ArrayList<>();
 
+
     public List<DrawableObject> getCarImagesList() {
         return carImagesList;
     }

@@ -16,6 +16,9 @@ import java.util.function.ToDoubleBiFunction;
 
 public class CarController {
 
+    //TODO flytta nedanstående till Buttons
+
+
     void brake(int amount) {
         List<Car> cars = Main.getCars();
         double brake = ((double) amount / 100);

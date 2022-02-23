@@ -63,6 +63,7 @@ public class Buttons extends JPanel {
         stopButton.setBackground(Color.red);
         stopButton.setForeground(Color.black);
 
+        //TODO flytta nedanstående till CarController
         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

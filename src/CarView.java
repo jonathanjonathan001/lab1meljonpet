@@ -29,7 +29,7 @@ public class CarView extends JFrame{
 
 
     // The controller member
-    CarController carC;
+    //CarController carC;
 
     DrawPanel drawPanel;
 
@@ -39,10 +39,10 @@ public class CarView extends JFrame{
 
 
     // Constructor
-    public CarView(String framename, CarController cc){
-        this.carC = cc;
+    public CarView(String framename, Buttons buttons /*CarController cc*/){
+        //this.carC = cc;
 
-        buttons = new Buttons(cc);
+        this.buttons = buttons;
 
         drawPanel = new DrawPanel(X, Y-240);
         initComponents(framename);
