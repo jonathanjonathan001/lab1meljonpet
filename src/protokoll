@@ -159,3 +159,4 @@ Skapa små specialiserade listor, skapa metoder för lift osv i CarController so
 Dessa kan skapas i main.
 
 
+state, (composite), factory, observer

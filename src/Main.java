@@ -23,7 +23,7 @@ public class Main {
         return carVisualizerList;
     }
 
-    public static void createCarVisualizerList(){
+    /* public static void createCarVisualizerList(){
 
         Point volvo240Point = new Point((int)cars.get(0).getxPosition(),(int)cars.get(0).getyPosition());
         Volvo240Visualizer volvo240Visualizer = new Volvo240Visualizer(volvo240Point);
@@ -37,7 +37,7 @@ public class Main {
         carVisualizerList.add(volvo240Visualizer);
         carVisualizerList.add(saab95Visualizer);
         carVisualizerList.add(scaniaVisualizer);
-    }
+    } */
 
     public static void updateCarVisualizerList(){
         for (int i = 0; i < carVisualizerList.size(); i++) {
@@ -45,21 +45,21 @@ public class Main {
             int yPos = (int)cars.get(i).getyPosition();
             carVisualizerList.get(i).setOriginPoint(new Point(xPos, yPos));
         }
-    }
+    } */
 
-   /* static List<DrawableObject> carImagesList = new ArrayList<>();
+    static List<DrawableObject> carImagesList = new ArrayList<>();
 
     public List<DrawableObject> getCarImagesList() {
         return carImagesList;
-    }*/
+    }
 
     public static Point findCarPoint(Car car) {
         return new Point((int) car.getxPosition(), (int) car.getyPosition());
     }
-/*
+
     public static DrawableObject createDrawableObject(BufferedImage image, Car car) {
         return new DrawableObject(image, findCarPoint(car));
-    }*/
+    }
 
     public static List<Car> getCars(){
         return cars;
