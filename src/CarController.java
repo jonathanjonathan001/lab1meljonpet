@@ -1,5 +1,7 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,75 +16,141 @@ import java.util.function.ToDoubleBiFunction;
  * modifying the model state and the updating the view.
  */
 
-public class CarController {
+public class CarController extends JComponent implements IObservable {
+
+    int gasAmount;
+    JPanel controlPanel = new JPanel();
+    JSpinner gasSpinner;
+
+    private List <IObserver> observers = new ArrayList<>();
+
+    @Override
+    public void addObserver(IObserver observer) {
+        observers.add(observer);
+    }
+
+
+
+    JButton gasButton = new JButton("Gas");
+    JButton brakeButton = new JButton("Brake");
+    JButton turboOnButton = new JButton("Saab Turbo on");
+    JButton turboOffButton = new JButton("Saab Turbo off");
+    JButton liftBedButton = new JButton("Scania Lift Bed");
+    JButton lowerBedButton = new JButton("Lower Lift Bed");
+
+    JButton startButton = new JButton("Start all cars");
+    JButton stopButton = new JButton("Stop all cars");
+
+
+
+    public void initButtons() {
+
+        SpinnerModel spinnerModel =
+                new SpinnerNumberModel(0, //initial value
+                        0, //min
+                        100, //max
+                        1);//step
+        gasSpinner = new JSpinner(spinnerModel);
+        gasSpinner.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                gasAmount = (int) ((JSpinner)e.getSource()).getValue();
+            }
+        });
+
+        controlPanel.setLayout(new GridLayout(2, 4));
+
+        controlPanel.add(gasButton, 0);
+        controlPanel.add(turboOnButton, 1);
+        controlPanel.add(liftBedButton, 2);
+        controlPanel.add(brakeButton, 3);
+        controlPanel.add(turboOffButton, 4);
+        controlPanel.add(lowerBedButton, 5);
+
+        controlPanel.setBackground(Color.CYAN);
+
+        startButton.setBackground(Color.blue);
+        startButton.setForeground(Color.green);
+
+        stopButton.setBackground(Color.red);
+        stopButton.setForeground(Color.black);
+
+        brakeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (IObserver observer: observers) {
+                    observer.update("brake", gasAmount);
+                }
+            }
+        });
+
+        gasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (IObserver observer: observers) {
+                    observer.update("gas", gasAmount);
+                }
+            }
+        });
+
+        liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (IObserver observer: observers) {
+                    observer.update("liftBed", 0);
+                }
+            }
+        });
+
+        lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (IObserver observer: observers) {
+                    observer.update("lowerBed", 0);
+                }
+            }
+        });
+
+        turboOnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (IObserver observer: observers) {
+                    observer.update("turboOn", 0);
+                }
+            }
+        });
+
+        turboOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (IObserver observer: observers) {
+                    observer.update("turboOff", 0);
+                }
+            }
+        });
+
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (IObserver observer: observers) {
+                    observer.update("startAllCars", 0);
+                }
+            }
+        });
+
+        stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (IObserver observer: observers) {
+                    observer.update("stopAllCars", 0);
+                }
+            }
+        });
+    }
+
+
 
     //TODO flytta nedanstående till Buttons
 
 
-    void brake(int amount) {
-        List<Car> cars = Main.getCars();
-        double brake = ((double) amount / 100);
-        for (Car car : cars) {
-            car.brake(brake);
-        }
-    }
 
-    // Calls the gas method for each car once
-    void gas(int amount) {
-        List<Car> cars = Main.getCars();
-        double gas = ((double) amount) / 100;
-        for (Car car : cars) {
-            car.gas(gas);
-        }
-    }
-
-    void startAllCars() {
-        List<Car> cars = Main.getCars();
-        for (Car car : cars) {
-            car.startEngine();
-        }
-    }
-
-    void stopAllCars() {
-        List<Car> cars = Main.getCars();
-        for (Car car : cars) {
-            car.stopEngine();
-        }
-    }
-
-    void lift(int angleIncrease) {
-        List<Car> trucks = Main.getTrucks();
-        //TODO
-        for (Car truck : trucks) {
-            Scania castedTruck = (Scania) truck;
-            castedTruck.liftTruckBed(angleIncrease);
-        }
-    }
-
-    void lower(int angleDecrease) {
-        List<Car> trucks = Main.getTrucks();
-        //TODO
-        for (Car truck : trucks) {
-            Scania castedTruck = (Scania) truck;
-            castedTruck.lowerTruckBed(angleDecrease);
-        }
-    }
-
-    void turboOn() {
-        List<Car> saab95s = Main.getSaab95s();
-        //TODO
-        for (Car saab95 : saab95s) {
-            Saab95 castedSaab = (Saab95) saab95;
-            castedSaab.setTurboOn();
-        }
-    }
-
-    void turboOff() {
-        List<Car> saab95s = Main.getSaab95s();
-        //TODO
-        for (Car saab95 : saab95s) {
-            Saab95 castedSaab = (Saab95) saab95;
-            castedSaab.setTurboOff();
-        }
-    }
 }

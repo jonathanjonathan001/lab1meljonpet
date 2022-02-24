@@ -29,7 +29,7 @@ public class CarView extends JFrame{
 
 
     // The controller member
-    //CarController carC;
+    CarController carC;
 
     DrawPanel drawPanel;
 
@@ -39,8 +39,8 @@ public class CarView extends JFrame{
 
 
     // Constructor
-    public CarView(String framename, Buttons buttons /*CarController cc*/){
-        //this.carC = cc;
+    public CarView(String framename, Buttons buttons ,CarController cc){
+        this.carC = cc;
 
         this.buttons = buttons;
 
@@ -60,22 +60,21 @@ public class CarView extends JFrame{
         this.add(drawPanel);
 
         this.add(buttons);
-        buttons.initButtons();
 
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(buttons.gasLabel, BorderLayout.PAGE_START);
-        gasPanel.add(buttons.gasSpinner, BorderLayout.PAGE_END);
+        gasPanel.add(carC.gasSpinner, BorderLayout.PAGE_END);
 
         this.add(gasPanel);
 
-        buttons.controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
-        this.add(buttons.controlPanel);
+        carC.controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
+        this.add(carC.controlPanel);
 
-        buttons.startButton.setPreferredSize(new Dimension(X/5-15,200));
-        this.add(buttons.startButton);
+        carC.startButton.setPreferredSize(new Dimension(X/5-15,200));
+        this.add(carC.startButton);
 
-        buttons.stopButton.setPreferredSize(new Dimension(X/5-15,200));
-        this.add(buttons.stopButton);
+        carC.stopButton.setPreferredSize(new Dimension(X/5-15,200));
+        this.add(carC.stopButton);
 
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
