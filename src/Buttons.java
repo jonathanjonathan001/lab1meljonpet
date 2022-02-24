@@ -12,8 +12,6 @@ public class Buttons extends JPanel implements IObserver {
 
     CarController carController;
 
-
-
     JLabel gasLabel = new JLabel("Amount of gas");
 
     public Buttons(CarController carController) {
@@ -35,6 +33,13 @@ public class Buttons extends JPanel implements IObserver {
                 break;
             case "turboOff" : turboOff();
                 break;
+            case "liftBed" : lift(amount);
+                break;
+            case "lowerBed" : lower(amount);
+                break;
+            case "addCar" : addCar();
+                break;
+            case "removeCar" : removeCar();
         }
     }
 
@@ -62,7 +67,6 @@ public class Buttons extends JPanel implements IObserver {
         }
     }
 
-    // Calls the gas method for each car once
     void gas(int amount) {
         java.util.List<Car> cars = Main.getCars();
         double gas = ((double) amount) / 100;
@@ -87,7 +91,6 @@ public class Buttons extends JPanel implements IObserver {
 
     void lift(int angleIncrease) {
         java.util.List<Car> trucks = Main.getTrucks();
-        //TODO
         for (Car truck : trucks) {
             Scania castedTruck = (Scania) truck;
             castedTruck.liftTruckBed(angleIncrease);
@@ -97,7 +100,6 @@ public class Buttons extends JPanel implements IObserver {
 
     void lower(int angleDecrease) {
         java.util.List<Car> trucks = Main.getTrucks();
-        //TODO
         for (Car truck : trucks) {
             Scania castedTruck = (Scania) truck;
             castedTruck.lowerTruckBed(angleDecrease);
@@ -106,7 +108,6 @@ public class Buttons extends JPanel implements IObserver {
 
     void turboOn() {
         java.util.List<Car> saab95s = Main.getSaab95s();
-        //TODO
         for (Car saab95 : saab95s) {
             Saab95 castedSaab = (Saab95) saab95;
             castedSaab.setTurboOn();
@@ -115,16 +116,9 @@ public class Buttons extends JPanel implements IObserver {
 
     void turboOff() {
         List<Car> saab95s = Main.getSaab95s();
-        //TODO
         for (Car saab95 : saab95s) {
             Saab95 castedSaab = (Saab95) saab95;
             castedSaab.setTurboOff();
         }
     }
-
-
-
-    //TODO flytta nedanstående till CarController
-
-
 }

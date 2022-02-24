@@ -30,7 +30,7 @@ public class Main {
 
 
 
-    public static List<Car> getCars(){
+    public static List<Car> getCars() {
         return cars;
     }
 
@@ -81,14 +81,18 @@ public class Main {
         carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, cars.get(2)));
     }
 
+    public static void setCarOffsets() {
+        for (int i = 0; i < cars.size() - 1; i++) {
+            cars.get(i).setyPosition((i+1) * CAR_OFFSET);
+        }
+    }
+
     public static void main(String[] args) {
         // Instance of this class
-
 
         CarController cc = new CarController();
 
         cc.initButtons();
-
 
         // Start a new view and send a reference of self
         CarView frame = new CarView("CarSim 1.0", new Buttons(cc), cc);
@@ -108,7 +112,7 @@ public class Main {
 
         private CarView frame;
 
-        public TimerListener (CarView frame){
+        public TimerListener(CarView frame) {
             this.frame = frame;
         }
 
@@ -120,8 +124,8 @@ public class Main {
                     car.turnLeft();
                 }
                 car.move();
-                int x = (int) Math.round(car.getxPosition());
-                int y = (int) Math.round(car.getyPosition());
+                // int x = (int) Math.round(car.getxPosition());
+                // int y = (int) Math.round(car.getyPosition());
 
 
                 //    updateCarVisualizerList();

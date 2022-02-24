@@ -29,18 +29,18 @@ public class CarController extends JComponent implements IObservable {
         observers.add(observer);
     }
 
-
-
     JButton gasButton = new JButton("Gas");
     JButton brakeButton = new JButton("Brake");
     JButton turboOnButton = new JButton("Saab Turbo on");
     JButton turboOffButton = new JButton("Saab Turbo off");
-    JButton liftBedButton = new JButton("Scania Lift Bed");
-    JButton lowerBedButton = new JButton("Lower Lift Bed");
+    JButton liftBedButton = new JButton("Lift Bed");
+    JButton lowerBedButton = new JButton("Lower Bed");
 
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
+    JButton addCarButton = new JButton("Add car");
+    JButton removeCarButton = new JButton("Remove car");
 
 
     public void initButtons() {
@@ -62,9 +62,11 @@ public class CarController extends JComponent implements IObservable {
         controlPanel.add(gasButton, 0);
         controlPanel.add(turboOnButton, 1);
         controlPanel.add(liftBedButton, 2);
-        controlPanel.add(brakeButton, 3);
-        controlPanel.add(turboOffButton, 4);
-        controlPanel.add(lowerBedButton, 5);
+        controlPanel.add(addCarButton, 3);
+        controlPanel.add(brakeButton, 4);
+        controlPanel.add(turboOffButton, 5);
+        controlPanel.add(lowerBedButton, 6);
+        controlPanel.add(removeCarButton, 7);
 
         controlPanel.setBackground(Color.CYAN);
 
@@ -145,12 +147,24 @@ public class CarController extends JComponent implements IObservable {
                 }
             }
         });
+
+        addCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                for (IObserver observer : observers){
+                    observer.update("addCar", 0);
+                }
+            }
+        });
+
+        addCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                for (IObserver observer : observers){
+                    observer.update("removeCar", 0);
+                }
+            }
+        });
     }
-
-
-
-    //TODO flytta nedanstående till Buttons
-
-
 
 }
