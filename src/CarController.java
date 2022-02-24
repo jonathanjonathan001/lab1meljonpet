@@ -96,7 +96,7 @@ public class CarController extends JComponent implements IObservable {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (IObserver observer: observers) {
-                    observer.update("liftBed", 0);
+                    observer.update("liftBed", 70);
                 }
             }
         });
@@ -105,7 +105,7 @@ public class CarController extends JComponent implements IObservable {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (IObserver observer: observers) {
-                    observer.update("lowerBed", 0);
+                    observer.update("lowerBed", 70);
                 }
             }
         });

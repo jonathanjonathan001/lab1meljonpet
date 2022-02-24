@@ -38,8 +38,21 @@ public class Buttons extends JPanel implements IObserver {
         }
     }
 
+    private void addCar() {
+        java.util.List<Car> cars = Main.getCars();
+        int currentSize = cars.size();
+        if (currentSize < 10){
+            cars.add(CarFactory.createSaab95());
+        }
+    }
 
-
+    private void removeCar() {
+        java.util.List<Car> cars = Main.getCars();
+        int currentSize = cars.size();
+        if (currentSize > 0){
+            cars.remove(currentSize - 1);
+        }
+    }
 
     void brake(int amount) {
         java.util.List<Car> cars = Main.getCars();
@@ -78,6 +91,7 @@ public class Buttons extends JPanel implements IObserver {
         for (Car truck : trucks) {
             Scania castedTruck = (Scania) truck;
             castedTruck.liftTruckBed(angleIncrease);
+
         }
     }
 

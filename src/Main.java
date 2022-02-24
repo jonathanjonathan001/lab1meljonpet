@@ -1,4 +1,3 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,80 +15,49 @@ public class Main {
     static List<Car> cars = new ArrayList<>();
     static List<Car> trucks = new ArrayList<>();
     static List<Car> saab95s = new ArrayList<>();
+    static List<Car> volvo240s = new ArrayList<>();
 
-   // private static List<CarVisualizer> carVisualizerList = new ArrayList<>();
+    static List<CarVisualizer> carVisualizerList = new ArrayList<>();
 
-    /*public static List<CarVisualizer> getCarVisualizerList(){
+
+    public static List<CarVisualizer> getCarVisualizerList() {
         return carVisualizerList;
-    }*/
-
-    /* public static void createCarVisualizerList(){
-
-        Point volvo240Point = new Point((int)cars.get(0).getxPosition(),(int)cars.get(0).getyPosition());
-        Volvo240Visualizer volvo240Visualizer = new Volvo240Visualizer(volvo240Point);
-
-        Point saab95Point = new Point((int)cars.get(1).getxPosition(),(int)cars.get(1).getyPosition());
-        Saab95Visualizer saab95Visualizer = new Saab95Visualizer(saab95Point);
-
-        Point scaniaPoint = new Point((int)cars.get(2).getxPosition(),(int)cars.get(2).getyPosition());
-        ScaniaVisualizer scaniaVisualizer = new ScaniaVisualizer(scaniaPoint);
-
-        carVisualizerList.add(volvo240Visualizer);
-        carVisualizerList.add(saab95Visualizer);
-        carVisualizerList.add(scaniaVisualizer);
-    } */
-
-   /*  public static void updateCarVisualizerList(){
-        for (int i = 0; i < cars.size(); i++) {
-            int xPos = (int)cars.get(i).getxPosition();
-            int yPos = (int)cars.get(i).getyPosition();
-            carVisualizerList.get(i).setOriginPoint(new Point(xPos, yPos));
-        }
-    } */
-
-    static List<DrawableObject> carImagesList = new ArrayList<>();
-
-
-    public List<DrawableObject> getCarImagesList() {
-        return carImagesList;
     }
 
     public static Point findCarPoint(Car car) {
         return new Point((int) car.getxPosition(), (int) car.getyPosition());
     }
 
-    public static DrawableObject createDrawableObject(BufferedImage image, Car car) {
-        return new DrawableObject(image, findCarPoint(car));
-    }
+
 
     public static List<Car> getCars(){
         return cars;
     }
-    public static List<Car> getTrucks() {return trucks;}
-    public static List<Car> getSaab95s() { return saab95s; }
 
-    static void updateCarImagesList(CarView frame) {
-        carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, cars.get(0)));
-        carImagesList.add(createDrawableObject(frame.drawPanel.saab95Image, cars.get(1)));
-        carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, cars.get(2)));
+    public static List<Car> getTrucks() {
+        return trucks;
     }
 
-    private static List<Car> makeSublistOfSaab95(){
-        for (Car car: cars) {
-            if (car.getModelName().equals("Saab95")) {
-                saab95s.add(car);
-            }
-        }
+    public static List<Car> getSaab95s() {
         return saab95s;
     }
 
-    private static List<Car> makeSublistOfTrucks(){
-        for (Car car: cars) {
-            if (car.getCarType() == Car.TypeOfCar.TRUCK) {
-                trucks.add(car);
-            }
+    public static List<Car> getVolvo240s() {
+        return volvo240s;
+    }
+
+    static void updateCarVisualizerList() {
+        for (Car saab95: saab95s) {
+            carVisualizerList.add(new Saab95Visualizer(saab95));
         }
-        return trucks;
+
+        for (Car volvo240 : volvo240s) {
+            carVisualizerList.add(new Volvo240Visualizer(volvo240));
+        }
+
+        for (Car scania: trucks) {
+            carVisualizerList.add(new ScaniaVisualizer(scania));
+        }
     }
 
     public static void init(CarView frame) {
@@ -102,14 +70,11 @@ public class Main {
         cars.add(saab95);
         cars.add(scania);
 
-        List<Car> trucks = makeSublistOfTrucks();
-        List<Car> saab95s = makeSublistOfSaab95();
+        trucks.add(scania);
+        saab95s.add(saab95);
+        volvo240s.add(volvo240);
 
-        cars.get(0).setyPosition(0 * CAR_OFFSET);
-        cars.get(1).setyPosition(1 * CAR_OFFSET);
-        cars.get(2).setyPosition(2 * CAR_OFFSET);
-
-       // createCarVisualizerList();
+        setCarOffsets();
 
         carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, cars.get(0)));
         carImagesList.add(createDrawableObject(frame.drawPanel.saab95Image, cars.get(1)));
@@ -159,9 +124,9 @@ public class Main {
                 int y = (int) Math.round(car.getyPosition());
 
 
-            //    updateCarVisualizerList();
-                carImagesList.clear();
-                updateCarImagesList(frame);
+                //    updateCarVisualizerList();
+               // carImagesList.clear();
+                updateCarVisualizerList();
 
                 // frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel

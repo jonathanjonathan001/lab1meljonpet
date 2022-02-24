@@ -2,18 +2,11 @@ import java.awt.*;
 
 public class ScaniaVisualizer extends CarVisualizer {
 
-    private final String filePath = "pics/Scania.jpg";
-    private Point originPoint;
+    private static final String filePath = "pics/Scania.jpg";
 
-    public ScaniaVisualizer (Point originPoint){
-        this.originPoint = originPoint;
+
+    public ScaniaVisualizer (Car car){
+        super(filePath, new Point((int)car.getxPosition(), (int)car.getyPosition()));
     }
 
-    public String getFilePath(){
-        return new String(filePath);
-    }
-
-    public Point getOriginPoint(){
-        return originPoint;
-    }
 }

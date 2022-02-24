@@ -2,21 +2,11 @@ import java.awt.*;
 
 public class Saab95Visualizer extends CarVisualizer {
 
-    private final String filePath = "pics/Saab95.jpg";
-    private Point originPoint;
+    private static final String filePath = "pics/Saab95.jpg";
 
-    public Saab95Visualizer (Point originPoint){
-        this.originPoint = originPoint;
 
+    public Saab95Visualizer (Car car){
+        super(filePath, new Point((int)car.getxPosition(), (int)car.getyPosition()));
     }
-
-    public String getFilePath(){
-        return new String(filePath);
-    }
-
-    public Point getOriginPoint(){
-        return originPoint;
-    }
-
 
 }

@@ -1,11 +1,8 @@
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.nio.Buffer;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -54,13 +51,13 @@ public class DrawPanel extends JComponent{
 
         //List<CarVisualizer> carVisualizerList = Main.getCarVisualizerList();
 
-        List<DrawableObject> carImagesList = Main.carImagesList;
+      //  List<CarVisualizer> carImagesList = Main.carImagesList;
 
        /* g.drawImage(volvoImage, carVisualizerList.get(0).getOriginPoint().x, carVisualizerList.get(0).getOriginPoint().y, null);
         g.drawImage(saab95Image, carVisualizerList.get(1).getOriginPoint().x, carVisualizerList.get(1).getOriginPoint().y, null);
         g.drawImage(scaniaImage, carVisualizerList.get(2).getOriginPoint().x, carVisualizerList.get(2).getOriginPoint().y, null);*/
 
-        for (DrawableObject drawableObject : carImagesList) {
+        for (CarVisualizer drawableObject : carVisualizerList) {
             g.drawImage(drawableObject.getImage(), (int) drawableObject.getX(), (int) drawableObject.getY(), null); // see javadoc for more info on the parameters
         }
     }
