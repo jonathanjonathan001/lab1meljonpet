@@ -2,18 +2,11 @@ import java.awt.*;
 
 public class Volvo240Visualizer extends CarVisualizer {
 
-    private final String filePath = "pics/Volvo240.jpg";
-    private Point originPoint;
+    private static final String filePath = "pics/Volvo240.jpg";
 
-    public Volvo240Visualizer (Point originPoint){
-        this.originPoint = originPoint;
+
+    public Volvo240Visualizer (Car car){
+        super(filePath, new Point((int)car.getxPosition(), (int)car.getyPosition()));
     }
 
-    public String getFilePath(){
-        return new String(filePath);
-    }
-
-    public Point getOriginPoint(){
-        return originPoint;
-    }
 }

@@ -26,7 +26,7 @@ public class DrawPanel extends JComponent{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        //List<CarVisualizer> carVisualizerList = Main.getCarVisualizerList();
+        List<CarVisualizer> carVisualizerList = Main.getCarVisualizerList();
 
       //  List<CarVisualizer> carImagesList = Main.carImagesList;
 

@@ -24,9 +24,9 @@ public class Main {
         return carVisualizerList;
     }
 
-    public static Point findCarPoint(Car car) {
+/*    public static Point findCarPoint(Car car) {
         return new Point((int) car.getxPosition(), (int) car.getyPosition());
-    }
+    }*/
 
 
 
@@ -76,9 +76,9 @@ public class Main {
 
         setCarOffsets();
 
-        carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, cars.get(0)));
+     /*   carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, cars.get(0)));
         carImagesList.add(createDrawableObject(frame.drawPanel.saab95Image, cars.get(1)));
-        carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, cars.get(2)));
+        carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, cars.get(2)));*/
     }
 
     public static void setCarOffsets() {
@@ -118,7 +118,7 @@ public class Main {
 
         public void actionPerformed(ActionEvent e) {
             for (Car car : cars) {
-                int carImageWidth = frame.drawPanel.volvoImage.getWidth();
+                int carImageWidth = carVisualizerList.get(0).getImageWidth();
                 if (car.getxPosition() > (frame.getFrameX() - carImageWidth) || car.getxPosition() < 0) {
                     car.turnLeft();
                     car.turnLeft();
