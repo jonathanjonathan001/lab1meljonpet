@@ -53,8 +53,6 @@ public class Buttons extends JPanel implements IObserver {
         }
     }
 
-
-
     private void removeCar() {
         java.util.List<Car> cars = Main.getCars();
         int numberOfCars = cars.size();
@@ -76,7 +74,7 @@ public class Buttons extends JPanel implements IObserver {
         }
     }
 
-    void gas(int amount) {
+    private void gas(int amount) {
         java.util.List<Car> cars = Main.getCars();
         double gas = ((double) amount) / 100;
         for (Car car : cars) {
@@ -91,14 +89,14 @@ public class Buttons extends JPanel implements IObserver {
         }
     }
 
-    void stopAllCars() {
+    private void stopAllCars() {
         java.util.List<Car> cars = Main.getCars();
         for (Car car : cars) {
             car.stopEngine();
         }
     }
 
-    void lift(int angleIncrease) {
+    private void lift(int angleIncrease) {
         java.util.List<Car> trucks = Main.getTrucks();
         for (Car truck : trucks) {
             Scania castedTruck = (Scania) truck;

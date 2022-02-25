@@ -166,5 +166,4 @@ public class CarController extends JComponent implements IObservable {
             }
         });
     }
-
 }

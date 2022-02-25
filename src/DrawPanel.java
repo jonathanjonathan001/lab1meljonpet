@@ -14,7 +14,6 @@ public class DrawPanel extends JComponent{
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
-        // this.cc = cc;
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
@@ -35,3 +34,4 @@ public class DrawPanel extends JComponent{
         }
     }
 }
+

@@ -17,7 +17,6 @@ public class Main {
 
     static List<CarVisualizer> carVisualizerList = new ArrayList<>();
 
-
     public static List<CarVisualizer> getCarVisualizerList() {
         return carVisualizerList;
     }
@@ -59,17 +58,11 @@ public class Main {
         }
     }
 
-    public static void init(CarView frame) {
+    private static void init() {
 
         Volvo240 volvo240 = CarFactory.createVolvo240();
         Saab95 saab95 = CarFactory.createSaab95();
         Scania scania = CarFactory.createScania();
-
-
-    /*    cars.add(volvo240);
-        cars.add(scania);
-        cars.add(saab95);*/
-
 
         trucks.add(scania);
         volvo240s.add(volvo240);
@@ -79,9 +72,6 @@ public class Main {
 
         setCarOffsets();
 
-     /*   carImagesList.add(createDrawableObject(frame.drawPanel.volvoImage, cars.get(0)));
-        carImagesList.add(createDrawableObject(frame.drawPanel.saab95Image, cars.get(1)));
-        carImagesList.add(createDrawableObject(frame.drawPanel.scaniaImage, cars.get(2)));*/
     }
 
     public static void setCarOffsets() {
@@ -118,7 +108,7 @@ public class Main {
 
         cc.addObserver(frame.buttons);
 
-        init(frame);
+        init();
         // Start the timer
         timer.start();
     }
@@ -136,6 +126,7 @@ public class Main {
 
         public void actionPerformed(ActionEvent e) {
             carVisualizerList.clear();
+            synchronizeCarLists();
             updateCarVisualizerList();
             setCarOffsets();
 
