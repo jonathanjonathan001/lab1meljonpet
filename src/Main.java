@@ -21,11 +21,6 @@ public class Main {
         return carVisualizerList;
     }
 
-/*    public static Point findCarPoint(Car car) {
-        return new Point((int) car.getxPosition(), (int) car.getyPosition());
-    }*/
-
-
 
     public static List<Car> getCars() {
         return cars;
@@ -43,13 +38,14 @@ public class Main {
         return volvo240s;
     }
 
-    static void updateCarVisualizerList() {
 
-        for (Car saab95: saab95s) {
+    private static void updateCarVisualizerList() {
+
+        for (Car saab95 : saab95s) {
             carVisualizerList.add(new Saab95Visualizer(saab95));
         }
 
-        for (Car scania: trucks) {
+        for (Car scania : trucks) {
             carVisualizerList.add(new ScaniaVisualizer(scania));
         }
 
@@ -68,31 +64,23 @@ public class Main {
         volvo240s.add(volvo240);
         saab95s.add(saab95);
 
-        synchronizeLists();
+        synchronizeCarLists();
 
         setCarOffsets();
 
     }
 
-    public static void setCarOffsets() {
+    private static void setCarOffsets() {
         for (int i = 0; i < cars.size() - 1; i++) {
             cars.get(i).setyPosition(CAR_OFFSET + (i) * CAR_OFFSET);
         }
     }
 
-    static void synchronizeLists(){
+    private static void synchronizeCarLists() {
         cars.clear();
         cars.addAll(trucks);
         cars.addAll(volvo240s);
         cars.addAll(saab95s);
-    }
-
-    private static void makeListsEqual(){
-        int difference = cars.size()-carVisualizerList.size();
-
-        if(difference != 0){
-            carVisualizerList.remove(carVisualizerList.size()-1);
-        }
     }
 
     public static void main(String[] args) {

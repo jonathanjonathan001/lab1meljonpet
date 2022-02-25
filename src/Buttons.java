@@ -20,48 +20,58 @@ public class Buttons extends JPanel implements IObserver {
 
     @Override
     public void update(String action, int amount) {
-        switch (action){
-            case "startAllCars": startAllCars();
+        switch (action) {
+            case "startAllCars":
+                startAllCars();
                 break;
-            case "stopAllCars" : stopAllCars();
+            case "stopAllCars":
+                stopAllCars();
                 break;
-            case "gas" : gas(amount);
+            case "gas":
+                gas(amount);
                 break;
-            case "brake" : brake(amount);
+            case "brake":
+                brake(amount);
                 break;
-            case "turboOn" : turboOn();
+            case "turboOn":
+                turboOn();
                 break;
-            case "turboOff" : turboOff();
+            case "turboOff":
+                turboOff();
                 break;
-            case "liftBed" : lift(amount);
+            case "liftBed":
+                lift(amount);
                 break;
-            case "lowerBed" : lower(amount);
+            case "lowerBed":
+                lower(amount);
                 break;
-            case "addCar" : addCar();
+            case "addCar":
+                addCar();
                 break;
-            case "removeCar" : removeCar();
+            case "removeCar":
+                removeCar();
         }
     }
 
     private void addCar() {
         java.util.List<Car> cars = Main.getCars();
         int currentSize = cars.size();
-        if (currentSize < 10){
+        if (currentSize < 10) {
             Car addedSaab95 = CarFactory.createSaab95();
             Main.saab95s.add(addedSaab95);
-            Main.setCarOffsets();
         }
     }
 
     private void removeCar() {
         java.util.List<Car> cars = Main.getCars();
         int numberOfCars = cars.size();
-        int numberOfVisualizers = Main.carVisualizerList.size();
-        if (numberOfCars > 0 && Main.saab95s.size() > 0){
-           // Main.cars.remove(numberOfCars - 1);
-            Main.saab95s.remove(Main.saab95s.size()-1);
-           // Main.carVisualizerList.remove(numberOfVisualizers-1);
-         //   Main.setCarOffsets();
+        if (numberOfCars > 0 && Main.saab95s.size() > 0) {
+            Main.saab95s.remove(Main.saab95s.size() - 1);
+
+        } else if (!Main.trucks.isEmpty()) {
+            Main.trucks.remove(Main.trucks.size() - 1);
+        } else if (!Main.volvo240s.isEmpty()) {
+            Main.volvo240s.remove(Main.volvo240s.size() - 1);
         }
 
     }
@@ -105,7 +115,7 @@ public class Buttons extends JPanel implements IObserver {
         }
     }
 
-    void lower(int angleDecrease) {
+    private void lower(int angleDecrease) {
         java.util.List<Car> trucks = Main.getTrucks();
         for (Car truck : trucks) {
             Scania castedTruck = (Scania) truck;
@@ -113,7 +123,7 @@ public class Buttons extends JPanel implements IObserver {
         }
     }
 
-    void turboOn() {
+    private void turboOn() {
         java.util.List<Car> saab95s = Main.getSaab95s();
         for (Car saab95 : saab95s) {
             Saab95 castedSaab = (Saab95) saab95;
@@ -121,7 +131,7 @@ public class Buttons extends JPanel implements IObserver {
         }
     }
 
-    void turboOff() {
+    private void turboOff() {
         List<Car> saab95s = Main.getSaab95s();
         for (Car saab95 : saab95s) {
             Saab95 castedSaab = (Saab95) saab95;

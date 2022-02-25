@@ -22,7 +22,7 @@ public class CarController extends JComponent implements IObservable {
     JPanel controlPanel = new JPanel();
     JSpinner gasSpinner;
 
-    private List <IObserver> observers = new ArrayList<>();
+    private List<IObserver> observers = new ArrayList<>();
 
     @Override
     public void addObserver(IObserver observer) {
@@ -53,7 +53,7 @@ public class CarController extends JComponent implements IObservable {
         gasSpinner = new JSpinner(spinnerModel);
         gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                gasAmount = (int) ((JSpinner)e.getSource()).getValue();
+                gasAmount = (int) ((JSpinner) e.getSource()).getValue();
             }
         });
 
@@ -79,7 +79,7 @@ public class CarController extends JComponent implements IObservable {
         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (IObserver observer: observers) {
+                for (IObserver observer : observers) {
                     observer.update("brake", gasAmount);
                 }
             }
@@ -88,7 +88,7 @@ public class CarController extends JComponent implements IObservable {
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (IObserver observer: observers) {
+                for (IObserver observer : observers) {
                     observer.update("gas", gasAmount);
                 }
             }
@@ -97,7 +97,7 @@ public class CarController extends JComponent implements IObservable {
         liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (IObserver observer: observers) {
+                for (IObserver observer : observers) {
                     observer.update("liftBed", 70);
                 }
             }
@@ -106,7 +106,7 @@ public class CarController extends JComponent implements IObservable {
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (IObserver observer: observers) {
+                for (IObserver observer : observers) {
                     observer.update("lowerBed", 70);
                 }
             }
@@ -115,7 +115,7 @@ public class CarController extends JComponent implements IObservable {
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (IObserver observer: observers) {
+                for (IObserver observer : observers) {
                     observer.update("turboOn", 0);
                 }
             }
@@ -124,7 +124,7 @@ public class CarController extends JComponent implements IObservable {
         turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (IObserver observer: observers) {
+                for (IObserver observer : observers) {
                     observer.update("turboOff", 0);
                 }
             }
@@ -133,7 +133,7 @@ public class CarController extends JComponent implements IObservable {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (IObserver observer: observers) {
+                for (IObserver observer : observers) {
                     observer.update("startAllCars", 0);
                 }
             }
@@ -142,7 +142,7 @@ public class CarController extends JComponent implements IObservable {
         stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (IObserver observer: observers) {
+                for (IObserver observer : observers) {
                     observer.update("stopAllCars", 0);
                 }
             }
@@ -150,8 +150,8 @@ public class CarController extends JComponent implements IObservable {
 
         addCarButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
-                for (IObserver observer : observers){
+            public void actionPerformed(ActionEvent e) {
+                for (IObserver observer : observers) {
                     observer.update("addCar", 0);
                 }
             }
@@ -159,8 +159,8 @@ public class CarController extends JComponent implements IObservable {
 
         removeCarButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
-                for (IObserver observer : observers){
+            public void actionPerformed(ActionEvent e) {
+                for (IObserver observer : observers) {
                     observer.update("removeCar", 0);
                 }
             }

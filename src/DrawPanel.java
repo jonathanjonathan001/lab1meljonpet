@@ -8,8 +8,7 @@ import javax.swing.*;
 
 // This panel represents the animated part of the view with the car images.
 
-public class DrawPanel extends JComponent{
-
+public class DrawPanel extends JComponent {
 
 
     // Initializes the panel and reads the images

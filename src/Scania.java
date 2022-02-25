@@ -4,7 +4,7 @@ public class Scania extends Car {
 
     TruckBed truckBed = new TruckBed(0);
 
-   // ILiftable truckbed;
+    // ILiftable truckbed;
 
     /**
      * Creates a car Scania
