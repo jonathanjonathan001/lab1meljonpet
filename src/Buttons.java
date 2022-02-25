@@ -50,6 +50,7 @@ public class Buttons extends JPanel implements IObserver {
                 break;
             case "removeCar":
                 removeCar();
+                break;
         }
     }
 
