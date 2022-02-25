@@ -47,15 +47,23 @@ public class Buttons extends JPanel implements IObserver {
         java.util.List<Car> cars = Main.getCars();
         int currentSize = cars.size();
         if (currentSize < 10){
-            cars.add(CarFactory.createSaab95());
+            Car addedSaab95 = CarFactory.createSaab95();
+            Main.saab95s.add(addedSaab95);
+            Main.setCarOffsets();
         }
     }
 
+
+
     private void removeCar() {
         java.util.List<Car> cars = Main.getCars();
-        int currentSize = cars.size();
-        if (currentSize > 0){
-            cars.remove(currentSize - 1);
+        int numberOfCars = cars.size();
+        int numberOfVisualizers = Main.carVisualizerList.size();
+        if (numberOfCars > 0 && Main.saab95s.size() > 0){
+           // Main.cars.remove(numberOfCars - 1);
+            Main.saab95s.remove(Main.saab95s.size()-1);
+           // Main.carVisualizerList.remove(numberOfVisualizers-1);
+         //   Main.setCarOffsets();
         }
     }
 

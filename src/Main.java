@@ -1,15 +1,13 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Main {
 
-    private final static int CAR_OFFSET = 100;
+    private final static int CAR_OFFSET = 90;
     private final static int delay = 50;
 
     static List<Car> cars = new ArrayList<>();
@@ -47,16 +45,17 @@ public class Main {
     }
 
     static void updateCarVisualizerList() {
+
         for (Car saab95: saab95s) {
             carVisualizerList.add(new Saab95Visualizer(saab95));
         }
 
-        for (Car volvo240 : volvo240s) {
-            carVisualizerList.add(new Volvo240Visualizer(volvo240));
-        }
-
         for (Car scania: trucks) {
             carVisualizerList.add(new ScaniaVisualizer(scania));
+        }
+
+        for (Car volvo240 : volvo240s) {
+            carVisualizerList.add(new Volvo240Visualizer(volvo240));
         }
     }
 
@@ -66,13 +65,17 @@ public class Main {
         Saab95 saab95 = CarFactory.createSaab95();
         Scania scania = CarFactory.createScania();
 
-        cars.add(volvo240);
-        cars.add(saab95);
+
+    /*    cars.add(volvo240);
         cars.add(scania);
+        cars.add(saab95);*/
+
 
         trucks.add(scania);
-        saab95s.add(saab95);
         volvo240s.add(volvo240);
+        saab95s.add(saab95);
+
+        synchronizeLists();
 
         setCarOffsets();
 
@@ -83,7 +86,22 @@ public class Main {
 
     public static void setCarOffsets() {
         for (int i = 0; i < cars.size() - 1; i++) {
-            cars.get(i).setyPosition((i+1) * CAR_OFFSET);
+            cars.get(i).setyPosition(CAR_OFFSET + (i) * CAR_OFFSET);
+        }
+    }
+
+    static void synchronizeLists(){
+        cars.clear();
+        cars.addAll(trucks);
+        cars.addAll(volvo240s);
+        cars.addAll(saab95s);
+    }
+
+    private static void makeListsEqual(){
+        int difference = cars.size()-carVisualizerList.size();
+
+        if(difference != 0){
+            carVisualizerList.remove(carVisualizerList.size()-1);
         }
     }
 
@@ -117,7 +135,17 @@ public class Main {
         }
 
         public void actionPerformed(ActionEvent e) {
+            carVisualizerList.clear();
+            updateCarVisualizerList();
+      //      makeListsEqual();
+
+            synchronizeLists();
+
+            System.out.println(cars.size());
+            System.out.println(carVisualizerList.size());
+
             for (Car car : cars) {
+
                 int carImageWidth = carVisualizerList.get(0).getImageWidth();
                 if (car.getxPosition() > (frame.getFrameX() - carImageWidth) || car.getxPosition() < 0) {
                     car.turnLeft();
@@ -129,8 +157,7 @@ public class Main {
 
 
                 //    updateCarVisualizerList();
-               // carImagesList.clear();
-                updateCarVisualizerList();
+                // carImagesList.clear();
 
                 // frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel

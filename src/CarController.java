@@ -157,7 +157,7 @@ public class CarController extends JComponent implements IObservable {
             }
         });
 
-        addCarButton.addActionListener(new ActionListener() {
+        removeCarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
                 for (IObserver observer : observers){
