@@ -28,14 +28,10 @@ public class DrawPanel extends JComponent{
 
         List<CarVisualizer> carVisualizerList = Main.getCarVisualizerList();
 
-      //  List<CarVisualizer> carImagesList = Main.carImagesList;
-
-       /* g.drawImage(volvoImage, carVisualizerList.get(0).getOriginPoint().x, carVisualizerList.get(0).getOriginPoint().y, null);
-        g.drawImage(saab95Image, carVisualizerList.get(1).getOriginPoint().x, carVisualizerList.get(1).getOriginPoint().y, null);
-        g.drawImage(scaniaImage, carVisualizerList.get(2).getOriginPoint().x, carVisualizerList.get(2).getOriginPoint().y, null);*/
-
-        for (CarVisualizer drawableObject : carVisualizerList) {
-            g.drawImage(drawableObject.getImage(), (int) drawableObject.getX(), (int) drawableObject.getY(), null); // see javadoc for more info on the parameters
+        if (!carVisualizerList.isEmpty()) {
+            for (CarVisualizer carVisualizer : carVisualizerList) {
+                g.drawImage(carVisualizer.getImage(), (int) carVisualizer.getX(), (int) carVisualizer.getY(), null); // see javadoc for more info on the parameters
+            }
         }
     }
 }

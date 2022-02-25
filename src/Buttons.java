@@ -65,9 +65,10 @@ public class Buttons extends JPanel implements IObserver {
            // Main.carVisualizerList.remove(numberOfVisualizers-1);
          //   Main.setCarOffsets();
         }
+
     }
 
-    void brake(int amount) {
+    private void brake(int amount) {
         java.util.List<Car> cars = Main.getCars();
         double brake = ((double) amount / 100);
         for (Car car : cars) {
@@ -83,7 +84,7 @@ public class Buttons extends JPanel implements IObserver {
         }
     }
 
-    void startAllCars() {
+    private void startAllCars() {
         java.util.List<Car> cars = Main.getCars();
         for (Car car : cars) {
             car.startEngine();

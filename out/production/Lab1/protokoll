@@ -162,3 +162,67 @@ Dessa kan skapas i main.
 
 
 state, (composite), factory, observer
+
+
+
+
+
+
+
+
+
+
+Uppgift 2
+Model
+	• DrawPanel
+	• Car
+		○ subklasserna
+		○ Truckbed
+	• Repairshop
+
+View
+	• CarView
+
+Controller
+	• CarController
+
+Vad borde gjorts?
+	• CarView borde vara dummare
+		○ hade hand om att koppla logik för knapparna bla
+	• DrawPanel
+		○ Tillhörde modellen men hade behövt hjälp av andra klasser för att hantera allt inom modellen. Borde varit smartare.
+	• CarControl (controllern)
+		○ Borde varit mycket tunnare.
+		○ Hade behövt många hjälpklasser för att hantera all logik som modellen är.
+
+Vilka brister åtgärdade vi?
+	• CarController blev tunnare.
+        ○ genom att skapa en buttons klass som avlastade (en del) av logiken (men fel del...)
+	• CarView blev lite dummare då Buttonsklassen vi implementerade tog hand om en del av logiken.
+		○ CarView hade kunnat vara ännu dummare? CarControllern i CarView hade kanske kunnat ligga någonannanstans så att CarView hade mindre ansvar.
+	• Vi löste så att DrawPanel inte behövde en CarController genom att flytta några metoder till main från CarController.
+	• Vi utökade antalet klasser i modellen för att särskilja vad som var modell och controller.
+	• Vi försökte låta bli att skapa en massa nya bilder genom att skapa en CarVisualizer klass och subklasser men det fick vi inte att fungera.
+
+Nytt UML med nya lösningar
+	• När CarView skapas i Main så skickas buttons via konstruktorn
+		○ Usage dependency till buttons från main, då main använder buttons konstruktor.
+	• Interface "IObserver" implementeras av Buttons
+	• Interface "IObservable" implementeras av CarController
+
+Uppgift 4
+	• Observer
+		○ Använder vi för CarController/Buttons så att signalerna till CarController kan nå buttons utan att CarController behöver känna till Buttons. Avsiktligt.
+	• Factory
+		○ Vi använder CarFactory i main vilket gör att vi slipper ha association till varje bilsubtyp. Avsiktligt.
+	• Composite
+		○ Använder vi inte - modellen har ingen trädstruktur.
+	• State
+		○ Kanske är move funktionen och turn right/left i car ett state pattern. Gör olika saker beroende vilket state/vilken riktning bilen befinner sig i för närvarande. Oavsiktligt.
+
+Uppgift 5
+    * Vår tanke från början vad att Main skulle vara som en "mediator" som både höll data och intitierade och kopplade samman komponenterna.
+        * Vi insåg att vi borde designat det bättre men tiden rann ut så vi fick leva med att det var en massa static metoder och variabler i main.
+
+Uppgift 6
+    * Vi resonerade kring användande av state. Avgöra vad metoden gör med hjälp av olika states?

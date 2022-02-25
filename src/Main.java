@@ -137,12 +137,7 @@ public class Main {
         public void actionPerformed(ActionEvent e) {
             carVisualizerList.clear();
             updateCarVisualizerList();
-      //      makeListsEqual();
-
-            synchronizeLists();
-
-            System.out.println(cars.size());
-            System.out.println(carVisualizerList.size());
+            setCarOffsets();
 
             for (Car car : cars) {
 
@@ -152,17 +147,9 @@ public class Main {
                     car.turnLeft();
                 }
                 car.move();
-                // int x = (int) Math.round(car.getxPosition());
-                // int y = (int) Math.round(car.getyPosition());
-
-
-                //    updateCarVisualizerList();
-                // carImagesList.clear();
-
-                // frame.drawPanel.moveit(x, y);
-                // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
             }
+            // repaint() calls the paintComponent method of the panel
+            frame.drawPanel.repaint();
         }
     }
 }
