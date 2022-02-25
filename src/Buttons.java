@@ -67,13 +67,11 @@ public class Buttons extends JPanel implements IObserver {
         int numberOfCars = cars.size();
         if (numberOfCars > 0 && Main.saab95s.size() > 0) {
             Main.saab95s.remove(Main.saab95s.size() - 1);
-
         } else if (!Main.trucks.isEmpty()) {
             Main.trucks.remove(Main.trucks.size() - 1);
         } else if (!Main.volvo240s.isEmpty()) {
             Main.volvo240s.remove(Main.volvo240s.size() - 1);
         }
-
     }
 
     private void brake(int amount) {
