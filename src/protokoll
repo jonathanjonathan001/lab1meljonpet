@@ -226,3 +226,15 @@ Uppgift 5
 
 Uppgift 6
     * Vi resonerade kring användande av state. Avgöra vad metoden gör med hjälp av olika states?
+
+
+    Bilarna borde ha en bredd höjd, specificerat i klasserna,
+    modellen ska funka med krockar utan view:n.
+
+    lagringen av visualizerlist ska ligga i carview
+
+    ansvaret för att ta hand om cars-lists, ska ligga i World-klassen, flytta ut main
+
+    Timerklassen för sig.
+
+    ITickable
